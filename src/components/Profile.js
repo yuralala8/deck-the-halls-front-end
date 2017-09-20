@@ -4,12 +4,6 @@ import WishList from './WishList'
 
 class Profile extends React.Component {
 
-
-	handleClick = (event) => {
-    	event.preventDefault()
-
-  	}
-
 	render(){
 		return(
 			<div>
@@ -18,7 +12,6 @@ class Profile extends React.Component {
 		)
 	}
 }
-
 
 
 export default Profile

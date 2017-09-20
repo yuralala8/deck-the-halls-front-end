@@ -27,6 +27,8 @@ class WishForm extends React.Component {
 		// console.log(this.state)
 	}
 
+
+
 	handleSubmit = (event) => {
 		event.preventDefault()
 	

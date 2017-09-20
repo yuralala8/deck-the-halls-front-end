@@ -23,6 +23,24 @@ class WishList extends React.Component {
 		this.setState({
 			wishLists: [...this.state.wishLists, itemParams]
 		})
+
+    	const jwtToken = localStorage.getItem("jwt")
+
+   		fetch('http://localhost:3000/api/v1/wishes',{
+          method: 'post',
+          body: JSON.stringify({
+          	item_name: itemParams.itemName,
+          	item_description: itemParams.itemDescription,
+          	item_link: itemParams.itemLink,
+          	item_rank: itemParams.itemImage,
+          	item_image: itemParams.itemRank,
+          	item_price: itemParams.itemPrice
+          }),
+          headers: {
+            "Authorization": `Bearer ${jwtToken}`
+          }
+        })
+
 	}
 
 	formSubmit = (wish) => {
