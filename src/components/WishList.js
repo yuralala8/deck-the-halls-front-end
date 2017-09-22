@@ -1,15 +1,15 @@
 import React from 'react'
 import '../App.css';
 import WishForm from './WishForm'
-import Wish from './Wish'
 import WishListContainer from './WishListContainer'
+import { connect } from 'react-redux'
+import { fetchWish } from '../actions/wishes'
 
 class WishList extends React.Component {
 	constructor(){
 		super()
 		this.state = {
 			showWishForm: false,
-			wishLists: []
 		}
 	}
 
@@ -19,29 +19,6 @@ class WishList extends React.Component {
 		})
 	}
 
-	handleSubmit = (itemParams) => {
-		this.setState({
-			wishLists: [...this.state.wishLists, itemParams]
-		})
-
-    	const jwtToken = localStorage.getItem("jwt")
-
-   		fetch('http://localhost:3000/api/v1/wishes',{
-          method: 'post',
-          body: JSON.stringify({
-          	item_name: itemParams.itemName,
-          	item_description: itemParams.itemDescription,
-          	item_link: itemParams.itemLink,
-          	item_rank: itemParams.itemImage,
-          	item_image: itemParams.itemRank,
-          	item_price: itemParams.itemPrice
-          }),
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`
-          }
-        })
-
-	}
 
 	formSubmit = (wish) => {
 		this.setState({
@@ -50,20 +27,38 @@ class WishList extends React.Component {
 	}
 
 
-	render(){
+	componentDidMount(){
+		this.props.getWish()
+	}
 
+
+	render(){
+		console.log(this.props.wishList)
 		return(
-			<div>
+			<div className="wishlist">
 				<button onClick={this.handleClick}> Add a wish... </button>
 				    <div className="wish-form">
 	          	{ this.state.showWishForm ? <WishForm showWishForm={this.state.showWishForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} /> : null }
 	        		</div>
-	        	<WishListContainer wishLists={this.state.wishLists}/>
+	        	<WishListContainer wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
 			</div>
 		)
 	}
 }
 
 
+function mapStateToProps(state) {
+	return {
+		wishList: state.wishes.wishList
+	}
+}
 
-export default WishList
+function mapDispatchToProps(dispatch) {
+	return {
+		getWish: () => {
+			dispatch(fetchWish())
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WishList)

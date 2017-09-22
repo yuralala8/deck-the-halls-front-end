@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 import Profile from './components/Profile'
 import Navbar from './components/Navbar'
+import Search from './components/Search'
 import Auth from './adapters/auth'
 import { Route, Redirect } from 'react-router-dom'
 
@@ -13,8 +14,7 @@ class App extends Component {
     super()
 
     this.state = {
-      currentUser: {user:{id:null}},
-      wishLists: [],
+      currentUser: {user:{id:""}},
       isLoggedIn: false,
       loading: true
     }
@@ -27,7 +27,8 @@ class App extends Component {
         this.setState({
           currentUser: user,
           isLoggedIn: true
-        }, this.setLocalstorage(user)) 
+        }, this.setLocalstorage(user))
+        console.log(this.state, "logged in") 
       })
 
   }
@@ -50,15 +51,19 @@ class App extends Component {
   }
 
 
+
   render() {
+
+    let currentUserId = this.state.currentUser.user.id
+
     return (
       <div className="App">
-        <Navbar isLoggedIn={localStorage.getItem('jwt')}/>
+        <Navbar isLoggedIn={localStorage.getItem('jwt')} currentUserId = {currentUserId}/>
+          {localStorage.getItem('jwt') ? <Redirect to={`/profile/${currentUserId}`} /> : <Redirect to= "/login"/>}
         <Route path="/login" render={() => <LoginForm onLogin={this.loginUser}/> }/>
         <Route path="/signup" render={() => <SignUpForm onSignUp={this.signUpUser} /> }/>
-        <Route path="/profile" render={() => <Profile currentUser = {this.state.currentUser} wishLists = {this.state.wishLists} /> }/>
-        <Navbar />
-     { localStorage.getItem('jwt') ? <Redirect to= "/profile"/> : <Redirect to= "/login"/> }
+        <Route path={`/profile/${currentUserId}`} render={() => <Profile currentUserId = {currentUserId} /> }/>
+        <Route path="/search" render={() => <Search currentUserId = {currentUserId} /> }/>
       </div>
     );
   }

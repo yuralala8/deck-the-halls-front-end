@@ -1,5 +1,7 @@
 import React from 'react'
 import '../App.css';
+import { connect } from 'react-redux'
+import { savingWish } from '../actions/wishes'
 
 class WishForm extends React.Component {
 	constructor(){
@@ -24,17 +26,13 @@ class WishForm extends React.Component {
 			itemImage: this.refs.image.value,
 			itemPrice: this.refs.price.value
 		})
-		// console.log(this.state)
 	}
-
-
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-	
-		this.props.submitHandler(this.state)
-		this.props.formSubmit(this.state)
 
+		this.props.addWish(this.state)
+		
 		this.setState({
 			itemName: "",
 			itemDescription: "",
@@ -44,11 +42,12 @@ class WishForm extends React.Component {
 			itemPrice: ""
 		})
 
-		// console.log(this.props.wishLists)
 	}
 
 
 	render() {
+
+		console.log(this.props)
 
 	return (
 		<div>
@@ -67,4 +66,13 @@ class WishForm extends React.Component {
 	}
 }
 
-export default WishForm
+
+function mapDispatchToProps(dispatch) {
+	return {
+		addWish: (wish) => {
+			dispatch(savingWish(wish))
+		}
+	}
+}
+
+export default connect(null, mapDispatchToProps)(WishForm)
