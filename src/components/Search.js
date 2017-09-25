@@ -1,12 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchResults } from '../actions/shopping'
+import SearchResults from './SearchResults'
+import ShowAddForm from './ShowAddForm'
 
 class Search extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-			searchTerm: ""
+			searchTerm: "",
+			showAddForm: false,
+			selectedItem: {}
 		}
 	}
 
@@ -14,7 +18,6 @@ class Search extends React.Component{
 	handleSubmit = (event) => {
 		event.preventDefault()
 		this.props.fetchData(this.state.searchTerm)
-		console.log(this.props)
 	}
 
 	handleChange = (event) => {
@@ -23,19 +26,25 @@ class Search extends React.Component{
 		})
 	}
 
-	componentDidMount(){
+	handleForm = (item) => {
+
+		this.setState({
+			showAddForm: true,
+			selectedItem: item
+		})
 		
 	}
 
 
 	render(){
-
 		return(
 			<div>
-			<form onSubmit={this.handleSubmit}>
-			<input onChange={this.handleChange}/>
-			<input type="submit" value="Search"/>
-			</form>
+				<form className="shop" onSubmit={this.handleSubmit}>
+					<input onChange={this.handleChange}/>
+					<input type="submit" value="Search"/>
+				</form>
+			<SearchResults showForm={this.handleForm}/>
+			{this.state.showAddForm ? <ShowAddForm currentUserId = {this.props.currentUserId} selectedItem={this.state.selectedItem}/> : null}
 			</div>
 			)
 	}

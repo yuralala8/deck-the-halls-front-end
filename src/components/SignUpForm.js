@@ -14,6 +14,7 @@ class SignUpForm extends React.Component {
 
     console.log(this.state.usernameInput)
     console.log(this.state.passwordInput)
+    
     const userParams = {
       username: this.state.usernameInput,
       password: this.state.passwordInput
@@ -57,11 +58,6 @@ class SignUpForm extends React.Component {
             </div>
         </div>
       </div>
-
-
-
-
-
 
     )
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { NavLink, Redirect } from 'react-router-dom';
+import FilterFriends from './FilterFriends'
 
 
 
@@ -15,6 +16,8 @@ const Navbar = (props) => {
 				{props.isLoggedIn ? <NavLink className="item" to="/party" exact>Secret Santa</NavLink> : <Redirect to= "/login"/>}
 
 				{props.isLoggedIn ? <NavLink className="item" to="/login" onClick={() => localStorage.clear()} exact>Logout</NavLink> : <Redirect to= "/login"/>}
+
+				{props.isLoggedIn ? <FilterFriends/> : null}
 
           </div>
 		)

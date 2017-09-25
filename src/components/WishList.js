@@ -1,64 +1,25 @@
 import React from 'react'
-import '../App.css';
-import WishForm from './WishForm'
-import WishListContainer from './WishListContainer'
-import { connect } from 'react-redux'
-import { fetchWish } from '../actions/wishes'
-
-class WishList extends React.Component {
-	constructor(){
-		super()
-		this.state = {
-			showWishForm: false,
-		}
-	}
-
-	handleClick = () => {
-		this.setState({
-			showWishForm: true
-		})
-	}
 
 
-	formSubmit = (wish) => {
-		this.setState({
-			showWishForm: false
-		})
-	}
+const WishList = (props) => {
 
-
-	componentDidMount(){
-		this.props.getWish()
-	}
-
-
-	render(){
-		console.log(this.props.wishList)
-		return(
-			<div className="wishlist">
-				<button onClick={this.handleClick}> Add a wish... </button>
-				    <div className="wish-form">
-	          	{ this.state.showWishForm ? <WishForm showWishForm={this.state.showWishForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} /> : null }
-	        		</div>
-	        	<WishListContainer wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
+	console.log("logging from wishList", props)
+	return (
+		<div>
+		{props.wishList.map((wish, index) => ( 
+			<div className="each-wish" key={index}>
+			<div> Description: {wish.item_description} </div> 
+			<div> Price: {wish.item_price}</div>
+			<div> {wish.item_link !== "" ? <a href={wish.item_link} target="_blank">Link</a> : null}</div>
+			<div> Priority: {wish.item_rank}</div>
+			<div> <img src={wish.item_image} alt=""/></div>
+			{props.currentUserId == props.id ? <button onClick={() => props.handleDelete(wish)}>delete</button> : null}
 			</div>
+			))}
+		</div>
 		)
-	}
+
 }
 
 
-function mapStateToProps(state) {
-	return {
-		wishList: state.wishes.wishList
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		getWish: () => {
-			dispatch(fetchWish())
-		}
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(WishList)
+export default WishList

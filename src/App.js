@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Search from './components/Search'
 import Auth from './adapters/auth'
 import { Route, Redirect } from 'react-router-dom'
+import Countdown from './components/Countdown'
 
 
 class App extends Component {
@@ -20,15 +21,25 @@ class App extends Component {
     }
   }
 
+  componentWillMount() {
+    console.log("getting from local storage", localStorage.getItem('id'))
+    this.setState({
+      currentUser: {user:{id: localStorage.getItem('id')}},
+      isLoggedIn: true
+    })
+  }
 
-   loginUser = (userParams) => {
+
+   loginUser = (userParams, history) => {
     Auth.login(userParams)
-      .then(user => {
+      .then(user =>  {
+         console.log("user", user)
         this.setState({
           currentUser: user,
           isLoggedIn: true
         }, this.setLocalstorage(user))
-        console.log(this.state, "logged in") 
+        console.log(this.state, "logged in")
+        history.push(`/profile/${user.user.id}`) 
       })
 
   }
@@ -41,7 +52,6 @@ class App extends Component {
      signUpUser = (userParams) => {
     Auth.signup(userParams)
       .then(user => {
-        console.log(user)
         this.setState({
           currentUser: user,
           isLoggedIn: true
@@ -51,19 +61,25 @@ class App extends Component {
   }
 
 
-
   render() {
 
     let currentUserId = this.state.currentUser.user.id
+    console.log("user id", this.state.currentUser)
 
     return (
-      <div className="App">
+      <div>
         <Navbar isLoggedIn={localStorage.getItem('jwt')} currentUserId = {currentUserId}/>
-          {localStorage.getItem('jwt') ? <Redirect to={`/profile/${currentUserId}`} /> : <Redirect to= "/login"/>}
-        <Route path="/login" render={() => <LoginForm onLogin={this.loginUser}/> }/>
-        <Route path="/signup" render={() => <SignUpForm onSignUp={this.signUpUser} /> }/>
-        <Route path={`/profile/${currentUserId}`} render={() => <Profile currentUserId = {currentUserId} /> }/>
+
+         {localStorage.getItem('jwt') ? null : <Redirect to= "/login"/>}
+        <Route path="/login" render={(props) => <LoginForm {...props} onLogin={this.loginUser}/> }/>
+        <Route path="/signup" render={(props) => <SignUpForm {...props} onSignUp={this.signUpUser} /> }/>
+        <Route path={"/profile/:id"} render={props => <Profile currentUserId={this.state.currentUser} {...props}/>}/>
         <Route path="/search" render={() => <Search currentUserId = {currentUserId} /> }/>
+
+      <div className="countdown">
+
+      <Countdown />
+      </div>
       </div>
     );
   }

@@ -18,8 +18,7 @@ class LoginForm extends React.Component {
       username: this.state.usernameInput,
       password: this.state.passwordInput
     }
-    this.props.onLogin(userParams)
-
+    this.props.onLogin(userParams, this.props.history)
     this.setState({
       usernameInput: "",
       passwordInput: ""
@@ -41,10 +40,6 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <div className="form-background-images">
-        </div>
-        <div className="form-background">
-        </div>
         <div className="form-wrapper">
             <form onSubmit={this.handleSubmit} className="user-form">
               <h1>Login</h1>
@@ -64,7 +59,7 @@ class LoginForm extends React.Component {
               New To Us? <Link to={`/signup`}>Register</Link>
             </div>
         </div>
-      </div>
+        </div>
     )
   }
 }

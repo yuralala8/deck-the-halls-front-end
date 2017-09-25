@@ -11,9 +11,8 @@ export function fetchResults(searchTerm) {
           }
     })
     .then(res => res.json())
-    .then(resp => console.log(resp.searchItems))
-    // .then(json => {
-    //       dispatch({type:"FETCH_DATA", payload: json})
-    //     })
+    .then(json => {
+          dispatch({type:"FETCH_DATA", payload: json.searchItems})
+        })
   }
 }
