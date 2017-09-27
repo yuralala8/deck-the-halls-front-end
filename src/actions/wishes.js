@@ -29,7 +29,6 @@ export function savingWish(wish) {
 
 export function fetchWish(profileId) {
 	return function(dispatch){
-    console.log("fetchWish", profileId)
 
 		const jwtToken = localStorage.getItem("jwt")
 

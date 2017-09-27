@@ -30,6 +30,7 @@ class WishForm extends React.Component {
 		event.preventDefault()
 
 		this.props.addWish(this.state)
+		this.props.hideForm()
 		this.setState({
 			itemDescription: "",
 			itemLink: "",
@@ -37,7 +38,6 @@ class WishForm extends React.Component {
 			itemRank: "",
 			itemPrice: ""
 		})
-
 	}
 
 	handleClick = () => {
@@ -46,8 +46,6 @@ class WishForm extends React.Component {
 
 
 	render() {
-
-		console.log(this.props)
 
 	return (
 		<div>

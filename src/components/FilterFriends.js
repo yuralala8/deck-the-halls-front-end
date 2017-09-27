@@ -31,7 +31,7 @@ class FilterFriends extends React.Component {
 	render(){
 		let users = this.props.data.filter(user => user.username.includes(this.state.searchTerm))
 		return (
-			<div>
+			<div className="find-users" >
 
 			<input className="find-users" placeholder="find users" type="text" onChange={this.handleInput}/>
 

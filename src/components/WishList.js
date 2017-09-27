@@ -1,9 +1,8 @@
 import React from 'react'
+import '../App.css'
 
 
 const WishList = (props) => {
-
-	console.log("logging from wishList", props)
 	return (
 		<div>
 		{props.wishList.map((wish, index) => ( 

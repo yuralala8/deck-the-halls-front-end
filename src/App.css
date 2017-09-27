@@ -5,7 +5,7 @@
 }
 
 body {
-   background-image: url('images/tree.jpg')
+
 }
 /*.App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -23,11 +23,11 @@ body {
 }
 
 a:link {
-  color: white;
+  color: black;
 }
 
 a:visited {
-  color: white;
+  color: black;
 }
 
 
@@ -45,15 +45,29 @@ a:visited {
   padding: 50px;
 }
 
-/*.wish {
+.friend-requests {
+  border: 2px solid;
+  display: inline-block;
+  padding: 10px 200px 100px 10px;
+  margin: 20px;
+  background-color: white;
+}
+
+.friends {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.each-wish {
   border-style: solid;
   border-width: 0.5px;
   padding: 10px;
-  height: 300px;
-  width: 200px;
+  height: 350px;
+  width: 350px;
   margin: 10px;
+  float: left;
 
-}*/
+}
 
 .find-users {
   float: right;
@@ -71,14 +85,14 @@ a:visited {
   text-align: right;
   padding-right: 10%;
   font-size: 2em;
-  color: #FFD700;
+  color: green;
 }
 
 #msg {
   text-align: right;
   padding-right: 10%;
   font-size: 2em;
-  color: #FFD700;
+  color: green;
 }
 
 p {

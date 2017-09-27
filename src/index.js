@@ -14,7 +14,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 const rootReducer = combineReducers({users: usersReducer, wishes: wishesReducer, shopping: shoppingReducer})
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
-console.log(store.getState())
 
 ReactDOM.render(<Provider store={store}><Router><App/></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();

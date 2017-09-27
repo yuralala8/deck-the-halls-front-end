@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { fetchResults } from '../actions/shopping'
 import AddToList from './AddToList'
 import ShowAddForm from './ShowAddForm'
-import { Button, Modal } from 'semantic-ui-react'
 
 const SearchResults = (props) => {
 

@@ -6,6 +6,7 @@ import Profile from './components/Profile'
 import Navbar from './components/Navbar'
 import Search from './components/Search'
 import Auth from './adapters/auth'
+import ViewFriends from './components/ViewFriends'
 import { Route, Redirect } from 'react-router-dom'
 import Countdown from './components/Countdown'
 
@@ -22,7 +23,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    console.log("getting from local storage", localStorage.getItem('id'))
     this.setState({
       currentUser: {user:{id: localStorage.getItem('id')}},
       isLoggedIn: true
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
 
-   loginUser = (userParams, history) => {
+   loginUser = (userParams) => {
     Auth.login(userParams)
       .then(user =>  {
          console.log("user", user)
@@ -39,7 +39,8 @@ class App extends Component {
           isLoggedIn: true
         }, this.setLocalstorage(user))
         console.log(this.state, "logged in")
-        history.push(`/profile/${user.user.id}`) 
+        window.location.assign(`/profile/${user.user.id}`)
+        
       })
 
   }
@@ -57,6 +58,7 @@ class App extends Component {
           isLoggedIn: true
         }, localStorage.setItem('jwt', user.jwt))
         console.log(this.state, "signed up, logged in")
+        window.location.assign(`/profile/${user.user.id}`)
       })
   }
 
@@ -64,7 +66,6 @@ class App extends Component {
   render() {
 
     let currentUserId = this.state.currentUser.user.id
-    console.log("user id", this.state.currentUser)
 
     return (
       <div>
@@ -73,9 +74,9 @@ class App extends Component {
          {localStorage.getItem('jwt') ? null : <Redirect to= "/login"/>}
         <Route path="/login" render={(props) => <LoginForm {...props} onLogin={this.loginUser}/> }/>
         <Route path="/signup" render={(props) => <SignUpForm {...props} onSignUp={this.signUpUser} /> }/>
-        <Route path={"/profile/:id"} render={props => <Profile currentUserId={this.state.currentUser} {...props}/>}/>
+        <Route path={"/profile/:id"} render={props => <Profile currentUserId={this.state.currentUser.user.id} {...props}/>}/>
         <Route path="/search" render={() => <Search currentUserId = {currentUserId} /> }/>
-
+        <Route path="/friends" render={() => <ViewFriends currentUserId = {currentUserId}/>}/>
       <div className="countdown">
 
       <Countdown />

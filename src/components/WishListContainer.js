@@ -35,12 +35,12 @@ class WishListContainer extends React.Component {
 
 
 	componentDidMount(){
-		console.log("wishlist container mounts")
+
 		this.props.getWish(this.props.id)
 	}
 
 	componentWillReceiveProps(nextProps){
-		console.log("componentWillReceiveProps", nextProps)
+
 		if (this.props.id !== nextProps.id) {
 			this.props.getWish(nextProps.id)
 		}
@@ -48,13 +48,12 @@ class WishListContainer extends React.Component {
 
 
 	handleDelete = (wish) => {
-		// console.log("logging wish", wish.id)
-		// console.log(this.props.deleteWish(wish.id))
+
 		this.props.deleteWish(wish.id)
 	}
 
 	render(){
-		console.log("wishlist container props", this.props)
+		
 		return(
 			<div className="wishlist">
 				{ this.props.currentUserId === this.props.id ? <button onClick={this.handleClick}> Add a wish... </button> : null}
@@ -69,7 +68,7 @@ class WishListContainer extends React.Component {
 
 
 function mapStateToProps(state) {
-	console.log("wishlist container state", state)
+
 	return {
 		wishList: state.wishes.wishList
 	}
