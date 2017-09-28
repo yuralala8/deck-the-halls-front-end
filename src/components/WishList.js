@@ -11,7 +11,7 @@ const WishList = (props) => {
 			<div> Price: {wish.item_price}</div>
 			<div> {wish.item_link !== "" ? <a href={wish.item_link} target="_blank">Link</a> : null}</div>
 			<div> Priority: {wish.item_rank}</div>
-			<div> <img src={wish.item_image} alt=""/></div>
+			<div> <img src={wish.item_image} alt="" /></div>
 			{props.currentUserId == props.id ? <button onClick={() => props.handleDelete(wish)}>delete</button> : null}
 			</div>
 			))}

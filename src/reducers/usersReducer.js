@@ -1,4 +1,4 @@
-function usersReducer(state = {data: [], requestProcess:[], pendingReceived: [], pendingSent: [], allFriendships: [], friends: []}, action) {
+function usersReducer(state = {data: [], userInfo: [], requestProcess:[], pendingReceived: [], pendingSent: [], allFriendships: [], friends: []}, action) {
 	switch(action.type){
 		case "FETCH_USER":
 		return Object.assign({}, state, {data: action.payload})
@@ -10,6 +10,8 @@ function usersReducer(state = {data: [], requestProcess:[], pendingReceived: [],
 		return Object.assign({}, state, {allFriendships: action.payload})
 		case "SHOW_FRIENDS":
 		return Object.assign({}, state, {friends: action.payload})
+		case "SEND_USERINFO":
+		return Object.assign({}, state, {userinfo: action.payload})
 		default:
 		return state
 	}

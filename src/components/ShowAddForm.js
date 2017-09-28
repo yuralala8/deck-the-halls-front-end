@@ -32,11 +32,12 @@ class ShowAddForm extends React.Component {
 		this.setState({
 			itemRank: ""
 		})
-
 		window.location = `/profile/${this.props.currentUserId}`
+
 	}
 
 render(){
+	console.log("logging from showaddform", this.props.currentUserId)
 	return(
 		<div>
 		 	<form onSubmit={this.handleSubmit}>

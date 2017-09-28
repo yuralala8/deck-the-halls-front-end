@@ -3,11 +3,10 @@ import '../App.css';
 import { connect } from 'react-redux'
 import { sendRequest, fetchRequest, searchUser, acceptRequest, myFriends } from '../actions/user'
 import WishListContainer from './WishListContainer'
+import UserInfoContainer from './UserInfoContainer'
 
 class Profile extends React.Component {
-	constructor(){
-		super()
-	}
+
 
 	componentDidMount = () => {
 		this.props.fetchRequest(this.props.currentUserId)
@@ -28,8 +27,8 @@ class Profile extends React.Component {
 
 
 	render(){
-		console.log(this.props.data)
-		// console.log("log from profile", this.props.match.params.id, this.props.currentUserId)
+		console.log("PROFILE!!", this.props.data)
+
 		if (this.props.data.length > 0){		
 			let button = null;
 			let currentUserId = this.props.currentUserId
@@ -39,13 +38,6 @@ class Profile extends React.Component {
 			let users = this.props.data
 			let requests = this.props.pendingReceived
 
-			console.log("REQUESTS!!!!", this.props.myfriends)
-
-			// if ((currentUserId != currentProfileId) && !((this.props.allRequests.find(request => (request.user_id == currentUserId && request.friend_id == currentProfileId)))   )) {
-
-			// } else if (currentUserId != currentProfileId && this.props.completedRequest.includes(this.props.data.find(user => user.id == currentProfileId).username)) {
-				// button = "You are friends"
-			
 			if (currentUserId != currentProfileId){
 				if (this.props.myfriends.includes(this.props.data.find(user => user.id == currentProfileId).username)) {
 					button = "you are friends"
@@ -61,10 +53,6 @@ class Profile extends React.Component {
 				button
 			}
 			
-			// if ((currentUserId != currentProfileId) && !(this.props.myfriends.includes(users.find(user => user.id == currentProfileId).username))) {
-			// 	button
-			// }
-			console.log(requests)
 			if (requests) {
 				req = requests.map(request => <p> {users.find(user => user.id == request.user_id).username + " has sent you a friend request"} <button onClick={() => this.handleAccept(request.user_id)}>accept</button></p>)
 			} else if (this.props.myfriends.find(requests.map(request => users.find(user => user.id == request.user_id).username))) {
@@ -77,6 +65,10 @@ class Profile extends React.Component {
 				
 			return(
 				<div>
+
+					<UserInfoContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
+
+
 				{(this.props.currentUserId == this.props.match.params.id) ? <div className="friend-requests">
 				Friend Requests: 
 				{req} 
@@ -85,8 +77,7 @@ class Profile extends React.Component {
 
 				{button}
 
-					<WishListContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId}/>
-
+				<WishListContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId}/>
 				</div>
 			)
 		} else {
@@ -97,7 +88,7 @@ class Profile extends React.Component {
 
 
 function mapStateToProps(state) {
-	// console.log("logging state from profile", state.users.requestProcess)
+	
 	return {
 		pendingReceived: state.users.pendingReceived,
 		pendingSent: state.users.pendingSent,
@@ -110,6 +101,7 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
+
 	return {
 		sendRequest: (friendId) => {
 			dispatch(sendRequest(friendId))
@@ -131,4 +123,3 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
-

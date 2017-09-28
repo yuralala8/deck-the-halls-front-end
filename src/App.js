@@ -56,7 +56,7 @@ class App extends Component {
         this.setState({
           currentUser: user,
           isLoggedIn: true
-        }, localStorage.setItem('jwt', user.jwt))
+        }, this.setLocalstorage(user))
         console.log(this.state, "signed up, logged in")
         window.location.assign(`/profile/${user.user.id}`)
       })

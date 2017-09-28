@@ -112,3 +112,27 @@ export function myFriends(currentUser) {
 }
 
 
+export function sendUserInfo(userInfo) {
+  return function(dispatch){
+
+    const jwtToken = localStorage.getItem("jwt")
+    const currentUser = localStorage.getItem('id')
+
+    const body = JSON.stringify({userInfo})
+
+      fetch('http://localhost:3000/api/v1/userinfo',{
+          method: 'post',
+          body: body,
+          headers: {
+            "Authorization": `Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+        })
+      .then((res) => res.json())
+      .then(json => {
+        dispatch({type:"SEND_USERINFO", payload: json})
+      })
+      .then(window.location.reload())
+  }
+}
