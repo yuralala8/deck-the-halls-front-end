@@ -9,6 +9,7 @@ import Auth from './adapters/auth'
 import ViewFriends from './components/ViewFriends'
 import { Route, Redirect } from 'react-router-dom'
 import Countdown from './components/Countdown'
+import PartyContainer from './components/PartyContainer'
 
 
 class App extends Component {
@@ -77,6 +78,7 @@ class App extends Component {
         <Route path={"/profile/:id"} render={props => <Profile currentUserId={this.state.currentUser.user.id} {...props}/>}/>
         <Route path="/search" render={() => <Search currentUserId = {currentUserId} /> }/>
         <Route path="/friends" render={() => <ViewFriends currentUserId = {currentUserId}/>}/>
+        <Route path="/party" render={() => <PartyContainer currentUserId={this.state.currentUser.user.id}/>}/>
       <div className="countdown">
 
       <Countdown />
