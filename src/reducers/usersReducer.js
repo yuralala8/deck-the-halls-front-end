@@ -11,7 +11,7 @@ function usersReducer(state = {data: [], userInfo: [], requestProcess:[], pendin
 		case "SHOW_FRIENDS":
 		return Object.assign({}, state, {friends: action.payload})
 		case "SEND_USERINFO":
-		return Object.assign({}, state, {userinfo: action.payload})
+		return Object.assign({}, state, {userInfo: action.payload})
 		default:
 		return state
 	}

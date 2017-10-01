@@ -81,7 +81,7 @@ class WishForm extends React.Component {
 				<div>Item Description <input ref="description" type="text" onChange={this.handleChange} /></div>
 				<div>Link: <input ref="link" type="text" onChange={this.handleChange} /></div>
 				<div>Priority: <input ref="rank" type="text" onChange={this.handleChange} /></div>
-				<div>Price: <input ref="price" type="text" onChange={this.handleChange} /></div>
+				<div>Price: $<input ref="price" type="text" onChange={this.handleChange} /></div>
 				<div>Attach an image: 
 					<Dropzone onDrop={this.handleDrop} multiple accept="image/*">
   					<p>Drop your files or click here to upload</p>

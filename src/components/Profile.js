@@ -17,17 +17,15 @@ class Profile extends React.Component {
 
 	handleClick = (friendId) => {
 		this.props.sendRequest(friendId)
-		console.log(this.props.friendRequest)
 	}
 
 	handleAccept = (friendId) => {
 		this.props.acceptRequest(friendId)
-		console.log(this.props.completedRequest)
 	}
 
 
 	render(){
-		console.log("PROFILE!!", this.props.data)
+		
 
 		if (this.props.data.length > 0){		
 			let button = null;
@@ -64,7 +62,7 @@ class Profile extends React.Component {
 
 				
 			return(
-				<div>
+				<div className="profile-container">
 
 					<UserInfoContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
 
@@ -118,7 +116,7 @@ function mapDispatchToProps(dispatch) {
 		viewFriends: (currentUser) => {
 			dispatch(myFriends(currentUser))
 			}
-}
+	}
 }
 
 

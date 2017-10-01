@@ -9,9 +9,10 @@ import thunk from 'redux-thunk'
 import usersReducer from './reducers/usersReducer'
 import wishesReducer from './reducers/wishesReducer'
 import shoppingReducer from './reducers/shoppingReducer'
+import partiesReducer from './reducers/partiesReducer'
 import { BrowserRouter as Router } from 'react-router-dom';
 
-const rootReducer = combineReducers({users: usersReducer, wishes: wishesReducer, shopping: shoppingReducer})
+const rootReducer = combineReducers({users: usersReducer, wishes: wishesReducer, shopping: shoppingReducer, parties: partiesReducer})
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 

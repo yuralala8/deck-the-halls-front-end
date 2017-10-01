@@ -18,7 +18,7 @@ class ViewFriends extends React.Component {
 		return(
 			<div className="friends">
 			You have {this.props.myfriends.length} friends
-			{this.props.myfriends.map(friend => <p className="friends">{friend}</p>)}
+			{this.props.myfriends.map((friend, index) => <p className="friends" key={index}>{friend.username}</p>)}
 			</div>
 			)
 		}

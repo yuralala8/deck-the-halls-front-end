@@ -1,5 +1,6 @@
 import React from 'react'
 import PartyForm from './PartyForm'
+import PartyList from './PartyList'
 
 class PartyContainer extends React.Component {
 
@@ -27,6 +28,7 @@ class PartyContainer extends React.Component {
 			<div>
 				<button onClick={this.handleClick}>Create a Party</button>
 				{this.state.showPartyForm ? <PartyForm currentUserId={this.props.currentUserId} cancel={this.hideForm}/> : null}
+				<PartyList currentUserId={this.props.currentUserId}/>
 			</div>
 			)
 	}

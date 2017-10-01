@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
+import Countdown from './Countdown'
 
 class LoginForm extends React.Component {
 
@@ -59,6 +60,9 @@ class LoginForm extends React.Component {
               New To Us? <Link to={`/signup`}>Register</Link>
             </div>
         </div>
+            <div className="countdown">        
+              <Countdown />
+            </div>
         </div>
     )
   }

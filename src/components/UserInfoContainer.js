@@ -33,13 +33,13 @@ class UserInfoContainer extends React.Component {
 
 	render(){
 		let user = this.props.userProfile.find(user => user.id == this.props.id)
-		console.log(this.state.defaultImg)
+		
 		return(
 			<div>
-				<p>{user.propic != null ? <img src={user.propic} alt="" width="300px" height="300px"/> : <img src={this.state.defaultImg} alt="" widht="300px" height="300px"/>} </p>
+				<p>{user.propic != null ? <img src={user.propic} alt="" id="propic"/> : <img src={this.state.defaultImg} alt="" width="300px" height="300px"/>} </p>
 				{user.bio}
 
-			{ this.props.currentUserId === this.props.id ? <button onClick={this.handleClick}> Edit Profile </button> : null}
+			{ this.props.currentUserId === this.props.id ? <button onClick={this.handleClick}> edit </button> : null}
 			
 			{ this.state.showProfileForm ? <UserInfoForm hideForm={this.hideForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} /> : null }
 
