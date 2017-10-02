@@ -9,17 +9,18 @@ const Navbar = (props) => {
 	return (
 			<div className="App-header">
 
-				{props.isLoggedIn ? <NavLink className="item" to={`/profile/${props.currentUserId}`} exact>My Profile</NavLink> : <Redirect to= "/login"/>}
-				
-				{props.isLoggedIn ? <NavLink className="item" to="/friends" exact>View Friends</NavLink> : <Redirect to="/login"/> }
-				
-				{props.isLoggedIn ? <NavLink className="item" to="/search" exact>Shopping Idea</NavLink> : <Redirect to= "/login"/>}
-				
-				{props.isLoggedIn ? <NavLink className="item" to="/party" exact>Secret Santa</NavLink> : <Redirect to= "/login"/>}
 
-				{props.isLoggedIn ? <NavLink className="item" to="/login" onClick={() => localStorage.clear()} exact>Logout</NavLink> : <Redirect to= "/login"/>}
+				{props.isLoggedIn ? <NavLink className="menu" to={`/profile/${props.currentUserId}`} exact>My Profile</NavLink> : <Redirect to= "/login"/>}
+				
+				{props.isLoggedIn ? <NavLink className="menu" to="/friends" exact>My Friends</NavLink> : <Redirect to="/login"/> }
+				
+				{props.isLoggedIn ? <NavLink className="menu" to="/search" exact>Shopping Ideas</NavLink> : <Redirect to= "/login"/>}
+				
+				{props.isLoggedIn ? <NavLink className="menu" to="/party" exact>Secret Santa</NavLink> : <Redirect to= "/login"/>}
 
-				{props.isLoggedIn ? <FilterFriends/> : null}
+				{props.isLoggedIn ? <NavLink className="logout" to="/login" onClick={() => localStorage.clear()} exact>Logout</NavLink> : <Redirect to= "/login"/>}
+
+				{props.isLoggedIn ? <FilterFriends className="find" /> : null}
 
           </div>
 		)

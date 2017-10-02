@@ -52,7 +52,7 @@ class Profile extends React.Component {
 			}
 			
 			if (requests) {
-				req = requests.map(request => <p> {users.find(user => user.id == request.user_id).username + " has sent you a friend request"} <button onClick={() => this.handleAccept(request.user_id)}>accept</button></p>)
+				req = requests.map(request => <p> {users.find(user => user.id == request.user_id).username + " has sent you a friend request "} <button id="accept" onClick={() => this.handleAccept(request.user_id)}>Accept</button></p>)
 			} else if (this.props.myfriends.find(requests.map(request => users.find(user => user.id == request.user_id).username))) {
 					req
 			} else {
