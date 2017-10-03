@@ -69,6 +69,7 @@ class App extends Component {
 
     return (
       <div>
+        
         <Navbar isLoggedIn={localStorage.getItem('jwt')} currentUserId = {currentUserId}/>
 
          {localStorage.getItem('jwt') ? null : <Redirect to= "/login"/>}

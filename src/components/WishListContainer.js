@@ -4,7 +4,7 @@ import WishForm from './WishForm'
 import WishList from './WishList'
 import { connect } from 'react-redux'
 import { fetchWish, deleteWish } from '../actions/wishes'
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Card } from 'semantic-ui-react'
 
 class WishListContainer extends React.Component {
 	constructor(){
@@ -55,13 +55,14 @@ class WishListContainer extends React.Component {
 	render(){
 		
 		return(
-			<div className="wishlist">
-				{ this.props.currentUserId === this.props.id ? <button onClick={this.handleClick}> Add a wish... </button> : null}
+			<Card fluid color='red' className='wishlist-container'>
 				    <div className="wish-form">
+				{ this.props.currentUserId === this.props.id ? <Button className="add-wish" compact onClick={this.handleClick}> Add a wish... </Button> : null}
 	          	{ this.state.showWishForm ? <WishForm hideForm={this.hideForm} showWishForm={this.state.showWishForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} /> : null }
 	        		</div>
 	        	<WishList currentUserId={this.props.currentUserId} id={this.props.id} handleDelete={this.handleDelete} wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
-			</div>
+				
+			</Card>
 		)
 	}
 }

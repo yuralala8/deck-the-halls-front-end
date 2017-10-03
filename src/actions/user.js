@@ -68,6 +68,31 @@ export function acceptRequest(friendId) {
   }
 }
 
+export function ignoreRequest(friendId) {
+  return function(dispatch){
+
+    const jwtToken = localStorage.getItem("jwt")
+    const currentUser = localStorage.getItem('id')
+
+    const body = JSON.stringify({friendId, currentUser})
+
+      fetch('http://localhost:3000/api/v1/delete',{
+          method: 'post',
+          body: body,
+          headers: {
+            "Authorization": `Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+        })
+      .then((res) => res.json())
+      .then(json => {
+        dispatch({type:"DELETE_REQUEST", payload: json})
+      })
+      .then(window.location.reload())
+  }
+}
+
 
 export function fetchRequest(currentUser) {
   return function(dispatch){

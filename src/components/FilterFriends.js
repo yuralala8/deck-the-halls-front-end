@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { searchUser } from '../actions/user'
+import { Input } from 'semantic-ui-react'
+
 
 class FilterFriends extends React.Component {
 
@@ -29,16 +31,15 @@ class FilterFriends extends React.Component {
 	}
 
 	render(){
+	
 		let users = this.props.data.filter(user => user.username.includes(this.state.searchTerm))
 		return (
 			<div className="find-users" >
-
-			<input className="find-users" placeholder="find users" type="text" onChange={this.handleInput}/>
-
-			{this.state.searchTerm == "" ? null : users.map(user => <p onClick={() =>this.handleClick(user)}>{user.username}</p>)}
-
+				<Input icon='users' iconPosition='left' placeholder="Search users..." type="text" onChange={this.handleInput}/>
+				{this.state.searchTerm == "" ? null : users.map(user => <p onClick={() =>this.handleClick(user)}>{user.username}</p>)}
 			</div>
 			)
+
 	}
 }
 

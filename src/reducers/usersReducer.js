@@ -8,6 +8,8 @@ function usersReducer(state = {data: [], userInfo: [], requestProcess:[], pendin
 		return Object.assign({}, state, {pendingReceived: action.payload.pending_received, pendingSent: action.payload.pending_sent})
 		case "ACCEPT_REQUEST":
 		return Object.assign({}, state, {allFriendships: action.payload})
+		case "DELETE_REQUEST":
+		return Object.assign({}, state, {allFriendships: action.payload})
 		case "SHOW_FRIENDS":
 		return Object.assign({}, state, {friends: action.payload})
 		case "SEND_USERINFO":

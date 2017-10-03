@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchResults } from '../actions/shopping'
 import SearchResults from './SearchResults'
 import ShowAddForm from './ShowAddForm'
+import { Input } from 'semantic-ui-react'
 
 class Search extends React.Component{
 	constructor(){
@@ -40,8 +41,7 @@ class Search extends React.Component{
 		return(
 			<div>
 				<form className="shop" onSubmit={this.handleSubmit}>
-					<input onChange={this.handleChange}/>
-					<input type="submit" value="Search"/>
+					<Input placeholder="What do you want for Christmas ?" action='Get me this!' onChange={this.handleChange}/>
 				</form>
 			<SearchResults showForm={this.handleForm}/>
 			{this.state.showAddForm ? <ShowAddForm currentUserId = {this.props.currentUserId} selectedItem={this.state.selectedItem}/> : null}

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
 import Countdown from './Countdown'
+import { Input } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
 
@@ -10,11 +11,9 @@ class LoginForm extends React.Component {
     passwordInput: ""
   }
 
+
   handleSubmit = (event) => {
     event.preventDefault()
-
-    console.log(this.state.usernameInput)
-    console.log(this.state.passwordInput)
     const userParams = {
       username: this.state.usernameInput,
       password: this.state.passwordInput
@@ -40,14 +39,15 @@ class LoginForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="login">
             <form onSubmit={this.handleSubmit}>
               <h1>Login</h1>     
-                  <input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
-                  <input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
-              <input type="submit" value="Log In"/>
+                  <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
+                  <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
+              <Input type="submit" value="Log In"/>
             </form>
 
+            
             
               New To Us? <Link to={`/signup`}>Register</Link>
             

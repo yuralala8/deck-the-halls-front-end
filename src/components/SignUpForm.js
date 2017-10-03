@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Countdown from './Countdown'
+import { Input } from 'semantic-ui-react'
 
 
 class SignUpForm extends React.Component {
@@ -42,23 +44,18 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <div>
-        <div className="form-wrapper">
             <form onSubmit={this.handleSubmit} className="user-form">
               <h1>Sign Up</h1>
-              <div className="field">
-                  <input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
-                </div>
-              <div className="field">
-                  <input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
-                </div>
-              <input type="submit" value="Sign Up"/>
-            </form>
-            <div className="ui message login-msg">
+
+                  <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
+                  <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
+                   <Input type="submit" value="Sign Up"/>
+            </form> 
               Already Registered? <Link to={`/login`}>Log In</Link>
+            <div className="countdown">        
+              <Countdown />
             </div>
         </div>
-      </div>
-
     )
   }
 }

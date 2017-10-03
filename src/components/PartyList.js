@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import { connect } from 'react-redux'
-import { myFriends } from '../actions/user'
+import { searchUser } from '../actions/user'
 import { getParties } from '../actions/parties'
 
 
@@ -9,11 +9,14 @@ class PartyList extends React.Component {
 
 	componentDidMount = () => {
 		this.props.getParties()
-		this.props.viewFriends(this.props.currentUserId)
+		this.props.searchUser()
+
 	}
 
+
 	render(){
-	
+		console.log("logging all users", this.props.allusers)
+
 			return (
 					<div>
 		
@@ -25,7 +28,7 @@ class PartyList extends React.Component {
 							<div>Date: {party.info.date.slice(0, 10)}</div>
 							<div>Max Amount: ${party.info.amount}</div>
 							<div>Participants: {party.participants.map(user => user.username)} </div>
-							<div>You're a secret santa for {this.props.myfriends.find(friend => friend.id == party.matches.find(match => match.giver_id == this.props.currentUserId).receiver_id).username}</div>
+							<div>You're a secret santa for {this.props.allusers.find(participant => participant.id == party.matches.find(match => match.giver_id == this.props.currentUserId).receiver_id).username}</div>
 						</p>
 						</div>
 						)
@@ -42,6 +45,7 @@ function mapStateToProps(state) {
 
 	
 	return {
+		allusers: state.users.data,
 		myfriends: state.users.friends,
 		parties: state.parties.parties
 	}
@@ -54,8 +58,8 @@ function mapDispatchToProps(dispatch) {
 		getParties: () => {
 			dispatch(getParties())
 		},
-		viewFriends: (currentUser) => {
-			dispatch(myFriends(currentUser))
+		searchUser: () => {
+			dispatch(searchUser())
 			}
 	}
 }

@@ -11,23 +11,22 @@ const SearchResults = (props) => {
 		props.showForm(item)
 	}
 
-	let items = props.data.slice(0, 20).map((item, index) => (
-
-			<div key={index}>
-				<div>{item.caption}</div>
+	let items = (props.data ? props.data.slice(0, 20).map((item, index) => (
+			<div className="each-result" key={index}>
+				<div className="caption">{item.caption}</div>
+				<div><img src={item.imageURI} className="wish-img"/></div>
 				<div>${item.localPrice}</div>
 				<div>{item.focusedProductUrl ? <a href={item.focusedProductUrl} target="_blank">Link</a> : null}</div>
-				<div><img src={item.imageURI} /></div>
-				<div><button onClick={() => handleClick(item)} >Add to my list</button></div>
+				<div className="add-button"><button onClick={() => handleClick(item)} >Add to my list</button></div>
 			</div>
 
 			
-			))
+			)) : <div className="no-result">No results found</div>)
+
 		
 	return(
-		<div>
+		<div className="result-list">
 			{items}
-			
 		</div>
 		)
 
