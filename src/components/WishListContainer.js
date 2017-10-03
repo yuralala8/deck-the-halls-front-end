@@ -4,7 +4,7 @@ import WishForm from './WishForm'
 import WishList from './WishList'
 import { connect } from 'react-redux'
 import { fetchWish, deleteWish } from '../actions/wishes'
-import { Button, Modal, Card } from 'semantic-ui-react'
+import { Button, Icon, Image, Card } from 'semantic-ui-react'
 
 class WishListContainer extends React.Component {
 	constructor(){

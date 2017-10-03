@@ -44,6 +44,7 @@ class Search extends React.Component{
 					<Input placeholder="What do you want for Christmas ?" action='Get me this!' onChange={this.handleChange}/>
 				</form>
 			<SearchResults showForm={this.handleForm}/>
+
 			{this.state.showAddForm ? <ShowAddForm currentUserId = {this.props.currentUserId} selectedItem={this.state.selectedItem}/> : null}
 			</div>
 			)

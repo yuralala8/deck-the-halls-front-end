@@ -83,6 +83,7 @@ a:hover {
   min-height: 50px;
   max-height: 100px;
   max-width: 100%;
+  object-fit: contain;
 }
 
 .valignment {
@@ -206,6 +207,10 @@ a:hover {
   padding-top: 2em;
 }
 
+.propic {
+  object-fit: cover;
+}
+
 #countdown {
   text-align: right;
   padding-right: 10%;
@@ -220,6 +225,50 @@ a:hover {
   font-size: 2em;
   color: green;
 }
+
+.content {
+  margin: 20px;
+  width: 300px;
+}
+
+.bio {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  float: left;
+}
+.upload-img {
+  border: 1px solid;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.buttons {
+  float: right;
+  clear: right;
+  margin: 20px;
+  bottom: 0;
+}
+
+.profile-update {
+  position: relative;
+}
+
+/*.ui.form textarea:not([rows]) {
+
+}*/
+
+.propic-preview {
+  object-fit: cover;
+  float:right;
+  margin: 10px;
+}
+
+.browse {
+  margin: 5px;
+  padding-top: 5px;
+  text-align: center;
+}
+
 
 .ui.action.input {
   margin-top: 2%;
@@ -261,6 +310,10 @@ a:hover {
 .ui.tiny.button.send-request {
   margin-left: 5%;
   width: 80%;
+}
+
+.ui.header:first-child {
+  margin: 20px;
 }
 
 

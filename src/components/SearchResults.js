@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchResults } from '../actions/shopping'
 import AddToList from './AddToList'
 import ShowAddForm from './ShowAddForm'
+import { Button, Icon, Image, Header, Modal, Card } from 'semantic-ui-react'
 
 const SearchResults = (props) => {
 
@@ -17,7 +18,8 @@ const SearchResults = (props) => {
 				<div><img src={item.imageURI} className="wish-img"/></div>
 				<div>${item.localPrice}</div>
 				<div>{item.focusedProductUrl ? <a href={item.focusedProductUrl} target="_blank">Link</a> : null}</div>
-				<div className="add-button"><button onClick={() => handleClick(item)} >Add to my list</button></div>
+				
+				<div className="add-button"><Button onClick={() => handleClick(item)} >Add to my list</Button></div>
 			</div>
 
 			

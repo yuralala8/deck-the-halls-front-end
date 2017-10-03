@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css';
 import UserInfoForm from './UserInfoForm'
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Header, Modal } from 'semantic-ui-react'
 
 class UserInfoContainer extends React.Component {
 	constructor(){
@@ -38,17 +38,17 @@ class UserInfoContainer extends React.Component {
 		return(
 
 			<Card>
-				<p>{user.propic != null && user.propic != "" ? <Image src={user.propic} alt="" id="propic"/> : <Image src={this.state.defaultImg} alt="" width="300px" height="300px"/>} </p>
+				<p>{user.propic != null && user.propic != "" ? <Image className="propic" src={user.propic} alt="" width="300px" height="300px"/> : <Image src={this.state.defaultImg} alt="" width="300px" height="300px"/>} </p>
 			<Card.Content>
 			<Card.Header>
 				@{user.username}
-			{ this.props.currentUserId === this.props.id ? <Button onClick={this.handleClick} size='mini'>edit</Button> : null}
+			{ this.props.currentUserId === this.props.id ? <Modal onClose={this.hideForm} trigger={<Button onClick={this.handleClick} size='mini'>edit</Button>}>{ this.state.showProfileForm ? <UserInfoForm hideForm={this.hideForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} defaultImg={this.state.defaultImg}/> : null }</Modal> : null}
 			</Card.Header>
 			<Card.Description>
 				{user.bio}
 			</Card.Description>
 			
-			{ this.state.showProfileForm ? <UserInfoForm hideForm={this.hideForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} defaultImg={this.state.defaultImg}/> : null }
+			
 			</Card.Content>
 
 			</Card>

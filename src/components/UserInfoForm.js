@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { sendUserInfo } from '../actions/user'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import { Button, Header, Icon, Input, Form, TextArea } from 'semantic-ui-react'
 
 class UserInfoContainer extends React.Component {
 	constructor(){
@@ -61,17 +62,25 @@ class UserInfoContainer extends React.Component {
 
 	render(){
 		return(
-			<div>
-				<form id="profile" onSubmit={this.handleSubmit}>
-					<div> Add Bio: <textarea form="profile" ref="bio" type="text" value={this.state.userBio} onChange={this.handleChange} /></div>
-					<div> Profile Image: 
-						<Dropzone onDrop={this.handleDrop} multiple accept="image/*">
-	  						<p>Drop your files or click here to upload</p>
+			<div className="profile-update">
+				<Form id="profile" onSubmit={this.handleSubmit}>
+			
+					<Header icon='id card outline' content='Update Profile'/>
+					<div className="content"> Upload Profile Image: 
+						<Dropzone className="upload-img" onDrop={this.handleDrop} multiple accept="image/*">
+	  						<p className="browse"><a href="#">Browse...</a></p>
 						</Dropzone></div>
-					<div>{this.state.profileImage.length > 0 ? <img src={this.state.profileImage} width="200px" height="200px"/> : null}</div>
-					<input type="submit" value="Update Profile" />
-					<button onClick={this.handleClick}>cancel</button>
-				</form>
+					<div className="propic-preview">{this.state.profileImage.length > 0 ? <img src={this.state.profileImage} className="propic-preview" width="200px" height="200px"/> : null}</div>
+
+					<div className="bio"> Add Bio: <br/><textarea form="profile" ref="bio" type="text" value={this.state.userBio} onChange={this.handleChange} placeholder="Write about yourself"/></div><br/>
+
+					<div className="buttons">
+					<Button onClick={this.handleClick}>cancel</Button>
+					<Input type="submit" value="Update Profile" />
+					<br/>
+					</div>
+					
+				</Form>
 			</div>
 			)
 	}
