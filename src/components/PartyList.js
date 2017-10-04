@@ -18,10 +18,10 @@ class PartyList extends React.Component {
 		console.log("logging all users", this.props.allusers)
 
 			return (
-					<div>
+					<div className="party-list">
 		
 					{this.props.parties.map((party, index) => (
-						<div className="party" key={index}>
+						<div className="each-party" key={index}>
 						<p>
 							<div>Host name: {party.info.host_name}</div>
 							<div>Location: {party.info.location}</div>

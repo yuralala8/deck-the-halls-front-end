@@ -79,15 +79,15 @@ class WishForm extends React.Component {
 	return (
 		<div>
 			<Form onSubmit={this.handleSubmit}>
-				<div>Item Description <Input size="mini" ref="description" type="text" onChange={this.handleChange} /></div>
-				<div>Link <Input size="mini" ref="link" type="text" onChange={this.handleChange} /></div>
-				<div>Priority <Input size="mini" ref="rank" type="text" onChange={this.handleChange} /></div>
-				<div>Price $<Input size="mini" ref="price" type="text" onChange={this.handleChange} /></div>
+				<div>Item Description <input size="mini" ref="description" type="text" onChange={this.handleChange} /></div>
+				<div>Link <input size="mini" ref="link" type="text" onChange={this.handleChange} /></div>
+				<div>Priority <input size="mini" ref="rank" type="text" onChange={this.handleChange} /></div>
+				<div>Price $<input size="mini" ref="price" type="text" onChange={this.handleChange} /></div>
 				<div>Attach an image: 
 					<Dropzone className="upload-img" onDrop={this.handleDrop} multiple accept="image/*">
   					<p className="browse">Browse...</p>
 					</Dropzone></div>
-				<div>{this.state.itemImage.length > 0 ? <img src={this.state.itemImage} width="200px" height="200px"/> : null}</div>
+				<div>{this.state.itemImage.length > 0 ? <img src={this.state.itemImage} className="preview-wish-img"/> : null}</div>
 				<Button size="medium" onClick={this.handleClick}>cancel</Button>
 				<Input type="submit" value="Save to my list" />
 			</Form>

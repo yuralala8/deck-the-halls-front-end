@@ -66,6 +66,37 @@ a:hover {
   padding: 10px;
 }
 
+.preview-wish-img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.party-form {
+  background-color: violet;
+  margin: 5% 10% 2% 10%;
+  padding: 5%;
+
+}
+
+.party-list {
+  background-color: white;
+  margin: 2% 10% 10% 10%;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.party-container {
+   margin: 5%;
+}
+
+.each-party {
+  margin: 2%;
+  padding: 2%;
+  border: 2px solid red;
+  border-radius: 20px;
+}
+
 .ui.card.wishlist-container {
   float: left;
   width: 70%;
@@ -89,6 +120,7 @@ a:hover {
 
 .item {
   font-weight: bold;
+  margin-bottom: 5%;
 }
 
 .more-info a:link {
@@ -102,6 +134,7 @@ a:hover {
   float: left;
   font-style: underline;
   text-decoration: underline;
+  margin-top: 10%;
 
 }
 
@@ -109,16 +142,21 @@ a:hover {
   float: right;
 }
 
+.valignment {
+  margin-top: 10%;
+}
+
 .valignment .price {
-  float:left;
+  float:right;
 }
 
 .result-price {
    float: right;
+   margin-top: 10%;
 }
 
 .valignment .rank {
-  float:right;
+  float:left;
   position: relative;
 }
 
@@ -142,6 +180,11 @@ a:hover {
 .profile-friend-request {
   margin-top: 10px;
 }
+
+.selected-caption: {
+  font-weight: bold;
+  font-size: 1.2em;
+  }
 
 .friends {
   text-align: center;
@@ -261,6 +304,7 @@ a:hover {
   border-radius: 10px;
 }
 
+
 .buttons {
   float: right;
   clear: right;
@@ -323,7 +367,7 @@ height: 50px;
 }
 
 .ui.dimmer {
-  background-color: rgba(0, 0, 0, .85) !important; 
+  background-color: rgba(0, 0, 0, .11) !important; 
 }
 
 .ui.mini.button {

@@ -4,7 +4,7 @@ import { myFriends } from '../actions/user'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { createParty } from '../actions/parties'
-
+import { Input, Form } from 'semantic-ui-react'
 class PartyForm extends React.Component {
 
 	constructor(){
@@ -21,10 +21,6 @@ class PartyForm extends React.Component {
 		this.props.viewFriends(this.props.currentUserId)
 	}
 
-	// componentDidUpdate() {
-	// 	this.props.createParty(this.state)
-	// }
-
 	handleChange = (event, val) => {
 		this.setState({
 			location: this.refs.location.value,
@@ -37,13 +33,11 @@ class PartyForm extends React.Component {
 		event.preventDefault()
 
 		this.props.createParty(this.state)
-		this.props.cancel()
 
 		this.setState({
 			location: "",
 			date: "",
 			amount: "",
-			comment: "",
 			participants: []
 		})
 		console.log(this.props)
@@ -63,24 +57,24 @@ class PartyForm extends React.Component {
 		let options = friends.map(friend => { return {value: friend, label: friend}})
 		console.log(this.props.parties)
 		return(
-			<div>
+			<div className="party-form">
 				<form onSubmit={this.handleSubmit}>
-				 <div>location: <input ref="location" onChange={this.handleChange}/></div>
-				 <div>date: <input ref="date" onChange={this.handleChange}/></div>
+					 <div>location: <input ref="location" onChange={this.handleChange}/></div>
+					 <div>date: <input ref="date" onChange={this.handleChange}/></div>
 
-				 <div>participants: 
-					 	<Select
-					 		multi={true}
-					 		joinValues={true}
-					 		value={this.state.participants}
-					 		options={options}
-					 		onChange={this.logChange}
-					 	/>
-				 </div>
+					 <div>participants: 
+						 	<Select
+						 		multi={true}
+						 		joinValues={true}
+						 		value={this.state.participants}
+						 		options={options}
+						 		onChange={this.logChange}
+						 	/>
+					 </div>
 
-				 <div>Max Amount $: <input ref="amount"onChange={this.handleChange}/></div>
-				 <div><input type="submit" value="host party!"/>
-				 <button onClick={this.props.cancel}>cancel</button></div>
+					 <div>Max Amount $: <input ref="amount"onChange={this.handleChange}/></div>
+					 <div><input type="submit" value="host party!"/>
+					 </div>
 				 </form>
 
 

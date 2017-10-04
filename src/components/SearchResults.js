@@ -15,7 +15,7 @@ const SearchResults = (props) => {
 	let items = (props.data ? props.data.slice(0, 20).map((item, index) => (
 			<div className="each-result" key={index}>
 
-				<Modal
+				<Modal 
 					open={props.showAddForm}
 					onClose={props.hideForm}
 					trigger={<div className="add-button"><Icon size="big" name="add circle" onClick={() => handleClick(item)} ></Icon></div>}
@@ -33,10 +33,10 @@ const SearchResults = (props) => {
 
 				</Modal>
 
-				<div className="caption">{item.caption}</div>
+				<div className="caption">{item.caption.length > 20 ? item.caption.slice(0, 60) + "..." : item.caption}</div>
 				<div><img src={item.imageURI} className="wish-img"/></div>
 				<div className="result-price">${item.localPrice}</div>
-				<div className="result-more-info">{item.focusedProductUrl ? <a href={item.focusedProductUrl} target="_blank">More Info</a> : null}</div>
+				<div className="result-more-info">{item.prodContainerUrl ? <a href={`https://www.shop.com${item.prodContainerUrl}`} target="_blank">More Info</a> : null}</div>
 				
 			</div>
 			

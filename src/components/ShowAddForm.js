@@ -18,7 +18,7 @@ class ShowAddForm extends React.Component {
 	handleChange = (event) => {
 		this.setState({
 			itemDescription: this.props.selectedItem.caption,
-			itemLink: this.props.selectedItem.focusedProductUrl ? this.props.selectedItem.focusedProductUrl : "",
+			itemLink: this.props.selectedItem.prodContainerUrl ? `https://www.shop.com${this.props.selectedItem.prodContainerUrl}` : "",
 			itemImage: this.props.selectedItem.imageURI,
 			itemRank: this.refs.rank.value,
 			itemPrice: this.props.selectedItem.localPrice
@@ -41,7 +41,7 @@ render(){
 	return(
 		<div>
 		 	<form onSubmit={this.handleSubmit}>
-			 	<p>Wish Item:{this.props.selectedItem.caption}</p>
+			 	<div className="selected-caption"> {this.props.selectedItem.caption}</div>
 			 	Wish Priority Level:<input type="text" ref="rank" onChange={this.handleChange}/>
 			 	<input type="submit"/>
 		 	</form>
