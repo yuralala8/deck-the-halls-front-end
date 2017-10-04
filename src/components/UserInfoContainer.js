@@ -19,11 +19,6 @@ class UserInfoContainer extends React.Component {
 		})
 	}
 
-	formSubmit = (profile) => {
-		this.setState({
-			showProfileForm: false
-		})
-	}
 
 	hideForm = () => {
 		this.setState({
@@ -33,7 +28,22 @@ class UserInfoContainer extends React.Component {
 
 
 	render(){
+		console.log(this.state)
 		let user = this.props.userProfile.find(user => user.id == this.props.id)
+		let modal = <Modal 
+					open={this.state.showProfileForm}
+					onClose={this.hideForm} 
+					trigger={ <Button onClick={this.handleClick} size='mini'>edit</Button> }
+				>
+				<Modal.Content> 
+					<UserInfoForm 
+						hideForm={this.hideForm} 
+						formSubmit={this.formSubmit} 
+						defaultImg={this.state.defaultImg}
+				/>
+				</Modal.Content>
+				</Modal>
+		
 		
 		return(
 
@@ -42,7 +52,7 @@ class UserInfoContainer extends React.Component {
 			<Card.Content>
 			<Card.Header>
 				@{user.username}
-			{ this.props.currentUserId === this.props.id ? <Modal onClose={this.hideForm} trigger={<Button onClick={this.handleClick} size='mini'>edit</Button>}>{ this.state.showProfileForm ? <UserInfoForm hideForm={this.hideForm} submitHandler={this.handleSubmit} formSubmit={this.formSubmit} defaultImg={this.state.defaultImg}/> : null }</Modal> : null}
+			{ this.props.currentUserId === this.props.id ? modal : null}
 			</Card.Header>
 			<Card.Description>
 				{user.bio}
@@ -57,4 +67,4 @@ class UserInfoContainer extends React.Component {
 }
 
 
-export default UserInfoContainer
+export default (UserInfoContainer)

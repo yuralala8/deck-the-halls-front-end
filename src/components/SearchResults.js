@@ -8,20 +8,37 @@ import { Button, Icon, Image, Header, Modal, Card } from 'semantic-ui-react'
 const SearchResults = (props) => {
 
 	const handleClick = (item) => {
-
 		props.showForm(item)
 	}
 
+
 	let items = (props.data ? props.data.slice(0, 20).map((item, index) => (
 			<div className="each-result" key={index}>
+
+				<Modal
+					open={props.showAddForm}
+					onClose={props.hideForm}
+					trigger={<div className="add-button"><Icon size="big" name="add circle" onClick={() => handleClick(item)} ></Icon></div>}
+				>
+				<Modal.Header>Add a Wish</Modal.Header>
+				<Modal.Content> 
+					<ShowAddForm 
+						hideForm={props.hideForm} 
+						formSubmit={props.formSubmit} 
+						defaultImg={props.defaultImg}
+						selectedItem={props.selectedItem}
+						currentUserId = {props.currentUserId}
+					/>
+				</Modal.Content>
+
+				</Modal>
+
 				<div className="caption">{item.caption}</div>
 				<div><img src={item.imageURI} className="wish-img"/></div>
-				<div>${item.localPrice}</div>
-				<div>{item.focusedProductUrl ? <a href={item.focusedProductUrl} target="_blank">Link</a> : null}</div>
+				<div className="result-price">${item.localPrice}</div>
+				<div className="result-more-info">{item.focusedProductUrl ? <a href={item.focusedProductUrl} target="_blank">More Info</a> : null}</div>
 				
-				<div className="add-button"><Button onClick={() => handleClick(item)} >Add to my list</Button></div>
 			</div>
-
 			
 			)) : <div className="no-result">No results found</div>)
 

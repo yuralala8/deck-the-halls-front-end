@@ -39,8 +39,7 @@ export function sendRequest(friendId) {
       .then(json => {
         dispatch({type:"SEND_REQUEST", payload: json})
       })
-      .then(window.location.reload())
-  }
+    }
 }
 
 export function acceptRequest(friendId) {
@@ -64,7 +63,7 @@ export function acceptRequest(friendId) {
       .then(json => {
         dispatch({type:"ACCEPT_REQUEST", payload: json})
       })
-      .then(window.location.reload())
+     
   }
 }
 
@@ -89,7 +88,6 @@ export function ignoreRequest(friendId) {
       .then(json => {
         dispatch({type:"DELETE_REQUEST", payload: json})
       })
-      .then(window.location.reload())
   }
 }
 
@@ -158,6 +156,5 @@ export function sendUserInfo(userInfo) {
       .then(json => {
         dispatch({type:"SEND_USERINFO", payload: json})
       })
-      .then(window.location.reload())
   }
 }

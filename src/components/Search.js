@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchResults } from '../actions/shopping'
 import SearchResults from './SearchResults'
 import ShowAddForm from './ShowAddForm'
-import { Input } from 'semantic-ui-react'
+import { Input, Header, Modal } from 'semantic-ui-react'
 
 class Search extends React.Component{
 	constructor(){
@@ -36,16 +36,22 @@ class Search extends React.Component{
 		
 	}
 
+	hideForm = () => {
+		this.setState({
+			showAddForm: false
+		})
+	}
+
 
 	render(){
+
+	
 		return(
 			<div>
 				<form className="shop" onSubmit={this.handleSubmit}>
 					<Input placeholder="What do you want for Christmas ?" action='Get me this!' onChange={this.handleChange}/>
 				</form>
-			<SearchResults showForm={this.handleForm}/>
-
-			{this.state.showAddForm ? <ShowAddForm currentUserId = {this.props.currentUserId} selectedItem={this.state.selectedItem}/> : null}
+			<SearchResults showAddForm={this.state.showAddForm} defaultImg={this.state.defaultImg} showForm={this.handleForm} hideForm={this.hideForm} currentUserId = {this.props.currentUserId} selectedItem={this.state.selectedItem}/>
 			</div>
 			)
 	}

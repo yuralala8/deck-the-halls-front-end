@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { savingWish } from '../actions/wishes'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import { Button, Input, Form } from 'semantic-ui-react'
 
 class WishForm extends React.Component {
 	constructor(){
@@ -77,19 +78,19 @@ class WishForm extends React.Component {
 
 	return (
 		<div>
-			<form onSubmit={this.handleSubmit}>
-				<div>Item Description <input ref="description" type="text" onChange={this.handleChange} /></div>
-				<div>Link: <input ref="link" type="text" onChange={this.handleChange} /></div>
-				<div>Priority: <input ref="rank" type="text" onChange={this.handleChange} /></div>
-				<div>Price: $<input ref="price" type="text" onChange={this.handleChange} /></div>
+			<Form onSubmit={this.handleSubmit}>
+				<div>Item Description <Input size="mini" ref="description" type="text" onChange={this.handleChange} /></div>
+				<div>Link <Input size="mini" ref="link" type="text" onChange={this.handleChange} /></div>
+				<div>Priority <Input size="mini" ref="rank" type="text" onChange={this.handleChange} /></div>
+				<div>Price $<Input size="mini" ref="price" type="text" onChange={this.handleChange} /></div>
 				<div>Attach an image: 
-					<Dropzone onDrop={this.handleDrop} multiple accept="image/*">
-  					<p>Drop your files or click here to upload</p>
+					<Dropzone className="upload-img" onDrop={this.handleDrop} multiple accept="image/*">
+  					<p className="browse">Browse...</p>
 					</Dropzone></div>
 				<div>{this.state.itemImage.length > 0 ? <img src={this.state.itemImage} width="200px" height="200px"/> : null}</div>
-				<input type="submit" value="Save to my list" />
-				<button onClick={this.handleClick}>cancel</button>
-			</form>
+				<Button size="medium" onClick={this.handleClick}>cancel</Button>
+				<Input type="submit" value="Save to my list" />
+			</Form>
 		</div>
 		)
 

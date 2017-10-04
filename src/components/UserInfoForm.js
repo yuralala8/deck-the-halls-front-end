@@ -22,13 +22,13 @@ class UserInfoContainer extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault()
 
-		this.props.sendUserInput(this.state)
 		this.props.hideForm()
+		this.props.sendUserInput(this.state)
 	}
 
 	handleChange = (event) => {
 		this.setState({
-			userBio: this.refs.bio.value
+			userBio: event.target.value
 		})
 
 	}
@@ -62,17 +62,18 @@ class UserInfoContainer extends React.Component {
 
 	render(){
 		return(
-			<div className="profile-update">
+			<div>
 				<Form id="profile" onSubmit={this.handleSubmit}>
-			
+					
 					<Header icon='id card outline' content='Update Profile'/>
-					<div className="content"> Upload Profile Image: 
+					
+					<div className="propic-img"> Upload Profile Image: 
 						<Dropzone className="upload-img" onDrop={this.handleDrop} multiple accept="image/*">
-	  						<p className="browse"><a href="#">Browse...</a></p>
+	  						<p className="browse">Browse...</p>
 						</Dropzone></div>
 					<div className="propic-preview">{this.state.profileImage.length > 0 ? <img src={this.state.profileImage} className="propic-preview" width="200px" height="200px"/> : null}</div>
 
-					<div className="bio"> Add Bio: <br/><textarea form="profile" ref="bio" type="text" value={this.state.userBio} onChange={this.handleChange} placeholder="Write about yourself"/></div><br/>
+					<div className="bio"> Add Bio: <br/><TextArea form="profile" type="text" value={this.state.userBio} onChange={this.handleChange} placeholder="Write about yourself" /></div><br/>
 
 					<div className="buttons">
 					<Button onClick={this.handleClick}>cancel</Button>

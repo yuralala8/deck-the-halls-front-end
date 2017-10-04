@@ -86,10 +86,6 @@ a:hover {
   object-fit: contain;
 }
 
-.valignment {
-/*  position: absolute;
-  bottom: 0;*/
-}
 
 .item {
   font-weight: bold;
@@ -102,12 +98,23 @@ a:hover {
 
 }
 
+.result-more-info a:link {
+  float: left;
+  font-style: underline;
+  text-decoration: underline;
+
+}
+
 .delete {
   float: right;
 }
 
 .valignment .price {
   float:left;
+}
+
+.result-price {
+   float: right;
 }
 
 .valignment .rank {
@@ -125,15 +132,15 @@ a:hover {
   float:left;
   margin: 4px;
   border-radius: 25px;
+  object-fit: cover;
 }
 
 .caption {
-  font-size: 0.9em;
+  font-weight: bold;
 }
 
 .profile-friend-request {
   margin-top: 10px;
-  height: 70px;
 }
 
 .friends {
@@ -144,11 +151,13 @@ a:hover {
 .friend-count {
   font-size: 1.3em;
   margin: 0px 0px 0px 30px;
+  color: white;
 }
 
 #each-friend {
   float: left;
   margin: 30px;
+
 }
 
 #friend-name {
@@ -160,6 +169,8 @@ a:hover {
   height: 100%;
   max-width: 130px;
   max-height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
 
 }
 
@@ -174,8 +185,9 @@ a:hover {
   margin: 10px;
   border-radius: 25px;
   padding: 10px 20px;
-  width: 230px;
+  width: 223px;
   float: left;
+  position: relative;
 }
 
 .each-wish {
@@ -187,7 +199,6 @@ a:hover {
   padding: 10px 20px;
   border-radius: 25px;
   width: 223px;
-  /*position: relative;*/
 }
 
 .find-users {
@@ -195,6 +206,15 @@ a:hover {
   margin-right: 10%;
   padding-right: 2em;
   padding-bottom: 0.8em;
+}
+
+.each-request {
+  height: 90px;
+  margin-top: 10px;
+}
+
+.friends {
+  margin: 3%;
 }
 
 .no-result {
@@ -226,9 +246,8 @@ a:hover {
   color: green;
 }
 
-.content {
+.propic-img {
   margin: 20px;
-  width: 300px;
 }
 
 .bio {
@@ -245,7 +264,8 @@ a:hover {
 .buttons {
   float: right;
   clear: right;
-  margin: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   bottom: 0;
 }
 
@@ -253,9 +273,9 @@ a:hover {
   position: relative;
 }
 
-/*.ui.form textarea:not([rows]) {
-
-}*/
+textarea {
+height: 50px;
+}
 
 .propic-preview {
   object-fit: cover;
@@ -269,6 +289,9 @@ a:hover {
   text-align: center;
 }
 
+.textarea {
+  font-family: inherit;
+}
 
 .ui.action.input {
   margin-top: 2%;
@@ -299,6 +322,10 @@ a:hover {
   width: 10%;
 }
 
+.ui.dimmer {
+  background-color: rgba(0, 0, 0, .85) !important; 
+}
+
 .ui.mini.button {
   float:right;
 }
@@ -313,7 +340,7 @@ a:hover {
 }
 
 .ui.header:first-child {
-  margin: 20px;
+  margin: 10px;
 }
 
 
