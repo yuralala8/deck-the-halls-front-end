@@ -3,6 +3,7 @@ import '../App.css'
 import { connect } from 'react-redux'
 import { searchUser } from '../actions/user'
 import { getParties } from '../actions/parties'
+import lights from '../images/lights.png'
 
 
 class PartyList extends React.Component {
@@ -11,6 +12,10 @@ class PartyList extends React.Component {
 		this.props.getParties()
 		this.props.searchUser()
 
+	}
+
+	handleDelete = () => {
+		// this.props.
 	}
 
 
@@ -23,12 +28,29 @@ class PartyList extends React.Component {
 					{this.props.parties.map((party, index) => (
 						<div className="each-party" key={index}>
 						<p>
-							<div>Host name: {party.info.host_name}</div>
-							<div>Location: {party.info.location}</div>
-							<div>Date: {party.info.date.slice(0, 10)}</div>
-							<div>Max Amount: ${party.info.amount}</div>
-							<div>Participants: {party.participants.map(user => user.username)} </div>
-							<div>You're a secret santa for {this.props.allusers.find(participant => participant.id == party.matches.find(match => match.giver_id == this.props.currentUserId).receiver_id).username}</div>
+							<div><button className="delete" onClick={this.handleDelete}>x</button></div>
+							<div className="hosted-by">You've been invited to a party hosted by . . . {party.info.host_name} !</div>
+							<img src={lights} className="lights"/>
+
+							<div className="form-row">
+
+							<div className="date">Date:</div> <div className="party-date">{party.info.date.slice(0, 10)}</div>
+							<div className="location"> Location:</div> <div className="party-location"> {party.info.location}</div>
+							</div>
+
+							<div className="form-row-attendees">
+							<div className="attendees">
+							Attendees:</div> {party.participants.map(user => <div className="names">{user.username}.</div>)} 
+							<div className="max-amount">Max Amount:</div> <div className="party-max-amount">${party.info.amount}</div>
+							</div>
+
+	
+					
+
+							<div className="form-row-santa">
+							<div className="secret-santa">p.s. You're a secret santa for <a className="name-link" href={`/profile/${this.props.allusers.find(participant => participant.id == party.matches.find(match => match.giver_id == this.props.currentUserId).receiver_id).id}`}>@{this.props.allusers.find(participant => participant.id == party.matches.find(match => match.giver_id == this.props.currentUserId).receiver_id).username}</a></div>
+							</div>
+
 						</p>
 						</div>
 						)

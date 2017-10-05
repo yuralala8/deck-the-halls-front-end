@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { searchUser } from '../actions/user'
 import { Input } from 'semantic-ui-react'
 
-
 class FilterFriends extends React.Component {
 
 	constructor(){
@@ -36,7 +35,9 @@ class FilterFriends extends React.Component {
 		return (
 			<div className="find-users" >
 				<Input icon='users' iconPosition='left' placeholder="Search users..." type="text" onChange={this.handleInput}/>
-				{this.state.searchTerm == "" ? null : users.map(user => <p onClick={() =>this.handleClick(user)}>{user.username}</p>)}
+				<div>
+				{this.state.searchTerm == "" ? null : users.map(user => <p className="filter-result" onClick={() =>this.handleClick(user)}>{user.username}</p>)}
+				</div>
 			</div>
 			)
 

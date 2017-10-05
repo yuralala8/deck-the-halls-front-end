@@ -39,23 +39,32 @@ class LoginForm extends React.Component {
   }
   render() {
     return (
+    <div>
       <div className="login">
             <form onSubmit={this.handleSubmit}>
               <h1>Login</h1>     
+
+              <div className="form-row-login">
+              <div className="login-input">
                   <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
                   <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
-              <Input type="submit" value="Log In"/>
+              </div>
+              <Input className="login-button" type="submit" value="Log In"/>
+            </div>
             </form>
 
             
-            
-              New To Us? <Link to={`/signup`}>Register</Link>
+            <p className="form-row-login-register">
+              First Visit? <Link to={`/signup`}>Register!</Link>
+            </p>
             
  
+        </div>
             <div className="countdown">        
               <Countdown />
             </div>
         </div>
+       
     )
   }
 }

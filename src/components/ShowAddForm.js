@@ -2,6 +2,7 @@ import React from 'react'
 import { addWish } from '../actions/wishes'
 import { connect } from 'react-redux'
 
+
 class ShowAddForm extends React.Component {
 
 	constructor(){
@@ -37,13 +38,15 @@ class ShowAddForm extends React.Component {
 	}
 
 render(){
-	console.log("logging from showaddform", this.props.currentUserId)
+	
 	return(
 		<div>
 		 	<form onSubmit={this.handleSubmit}>
 			 	<div className="selected-caption"> {this.props.selectedItem.caption}</div>
-			 	Wish Priority Level:<input type="text" ref="rank" onChange={this.handleChange}/>
-			 	<input type="submit"/>
+			 	<img className="selected-img" src={this.props.selectedItem.imageURI}/>
+			 	<div className="selected-price">Price: ${this.props.selectedItem.localPrice}</div>
+			 	Wish Priority Level:<input className="input-rank" type="text" ref="rank" onChange={this.handleChange}/>
+			 	<input type="submit" className="submit-button"/>
 		 	</form>
 	  </div>
 	  )

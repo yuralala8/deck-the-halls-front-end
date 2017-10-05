@@ -75,7 +75,7 @@ class App extends Component {
          {localStorage.getItem('jwt') ? null : <Redirect to= "/login"/>}
         <Route path="/login" render={(props) => <LoginForm {...props} onLogin={this.loginUser}/> }/>
         <Route path="/signup" render={(props) => <SignUpForm {...props} onSignUp={this.signUpUser} /> }/>
-        <Route path={"/profile/:id"} render={props => <Profile currentUserId={this.state.currentUser.user.id} {...props}/>}/>
+        <Route path={"/profile/:id"} render={props => <Profile isLoggedIn={this.state.isLoggedIn} currentUserId={this.state.currentUser.user.id} {...props}/>}/>
         <Route path="/search" render={() => <Search currentUserId = {currentUserId} /> }/>
         <Route path="/friends" render={() => <ViewFriends currentUserId = {currentUserId}/>}/>
         <Route path="/party" render={() => <Party currentUserId={this.state.currentUser.user.id}/>}/>

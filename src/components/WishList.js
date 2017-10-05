@@ -3,8 +3,13 @@ import '../App.css'
 import { Button, Icon } from 'semantic-ui-react'
 
 const WishList = (props) => {
+
+	if (props.wishList.length > 0) {
+
 	return (
 		<div className="wishlist">
+
+		<p className="my-wish-list">{props.userProfile.find(user => user.id == props.id).username}'s Wish List</p>
 		{props.wishList.map((wish, index) => ( 
 			<div className="each-wish" key={index}>
 				{props.currentUserId == props.id ? <Button icon size="mini" className="delete"onClick={() => props.handleDelete(wish)}><Icon name="delete"/></Button> : null}
@@ -20,6 +25,18 @@ const WishList = (props) => {
 			))}
 		</div>
 		)
+	} else {
+
+		return (
+
+			<div className="wishlist">
+			<p className="my-wish-list">{props.userProfile.find(user => user.id == props.id).username}'s Wish List</p>
+
+			<p className="no-wish">{props.userProfile.find(user => user.id == props.id).username} hasn't added a wish yet.</p>
+			</div>
+
+			)
+	} 
 
 }
 

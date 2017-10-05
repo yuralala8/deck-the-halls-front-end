@@ -5,10 +5,14 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { createParty } from '../actions/parties'
 import { Input, Form } from 'semantic-ui-react'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import milkcookies from '../images/milkcookies.png'
+
 class PartyForm extends React.Component {
 
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			location: "",
 			date: "",
@@ -21,11 +25,21 @@ class PartyForm extends React.Component {
 		this.props.viewFriends(this.props.currentUserId)
 	}
 
-	handleChange = (event, val) => {
+	handleLocation = (event) => {
 		this.setState({
-			location: this.refs.location.value,
-			date: this.refs.date.value,
-			amount: this.refs.amount.value
+			location: event.target.value
+		})
+	}
+
+	handleChange = (date) => {
+		this.setState({
+			date: date
+		})
+	}
+
+	handleAmount = (event) => {
+		this.setState({
+			amount: event.target.value
 		})
 	}
 
@@ -59,25 +73,33 @@ class PartyForm extends React.Component {
 		return(
 			<div className="party-form">
 				<form onSubmit={this.handleSubmit}>
-					 <div>location: <input ref="location" onChange={this.handleChange}/></div>
-					 <div>date: <input ref="date" onChange={this.handleChange}/></div>
+					<div className="form-row">
+					Location: <div className="location-box"><Input className="input-location" value={this.state.location} onChange={this.handleLocation}/></div>
+					Date: <div className="date-box"> 
+							<DatePicker 
+								className="input-date"
+								selected={this.state.date} 
+								onChange={this.handleChange}/></div>
 
-					 <div>participants: 
-						 	<Select
-						 		multi={true}
-						 		joinValues={true}
-						 		value={this.state.participants}
-						 		options={options}
-						 		onChange={this.logChange}
-						 	/>
-					 </div>
+					Max Amount $: <div className="max-box"><Input className="input-max" value={this.state.amount} onChange={this.handleAmount}/></div>
+					</div>
+					<div className="form-row">
+						Participants: 
+						<div className="participants-box">
+							 	<Select className="select"
+							 		placeholder="Select Friends to Invite . . ."
+							 		multi={true}
+							 		joinValues={true}
+							 		value={this.state.participants}
+							 		options={options}
+							 		onChange={this.logChange}/>
+						</div>
+					</div>
 
-					 <div>Max Amount $: <input ref="amount"onChange={this.handleChange}/></div>
-					 <div><input type="submit" value="host party!"/>
-					 </div>
+				 <img src={milkcookies} className="invite-logo"/>
+					 	<div className="submit-box"><Input type="submit" value="host party!"/></div>
+
 				 </form>
-
-
 			</div>
 			)
 	}

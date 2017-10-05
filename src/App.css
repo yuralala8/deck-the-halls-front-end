@@ -1,4 +1,4 @@
-.form-wrapper {
+ a.form-wrapper {
   padding-left: 60%;
   padding-top: 5%;
   text-align: center;
@@ -6,15 +6,55 @@
 
 body {
   font-family: 'PT Sans', sans-serif;
-  background-color: #ad0f1f;
- /* background-image: url('./images/red_snow.gif');
-  background-size:100% 100vh;*/
+  background-color: #ad0f1f; background: url('./images/red_snow.gif') no-repeat;
+  background-size:cover;
+  overflow: 'hidden',
 }
 
+/*body.login-page {
+  background-image: url('./images/red_snow.gif');
+}
+*/
 
+
+.login {
+   background-color: white;
+   width: 500px;
+   height: auto;
+   padding: 5px;
+   border-radius: 10px;
+   margin-left: 10%;
+   margin-top: 50px;
+}
+
+.form-row-login {
+  display: flex;
+}
+.login-input {
+  margin-left: 20px;
+}
+
+.form-row-login-register {
+  font-size: 1.5em;
+  font-family: 'Shadows into Light';
+  padding: 20px;
+}
+
+.login-button {
+
+  margin-left: 10px;
+}
+
+h1 {
+  font-size: 4em;
+  font-family: 'Mountains of Christmas';
+  padding-left: 20px;
+  color: gold;
+  font-weight: bold;
+}
 .App-header {
   margin-top: 2%;
-  margin-left: 8%;
+  margin-left: 2%;
 }
 
 .logo {
@@ -55,10 +95,10 @@ a:hover {
 
 .App-header .logout {
   float:right;
-  padding-right: 10px;
 }
 
 .App-header .find {
+
 
 }
 
@@ -66,23 +106,44 @@ a:hover {
   padding: 10px;
 }
 
+.stockings {
+
+  width: 300px;
+  height: 110px;
+  object-fit: scale-down;
+
+}
+
+.form-row-header {
+  display: flex;
+}
+
+.invite-logo {
+  width: 140px;
+  height: 140px;
+  float: right;
+  object-fit: scale-down;
+  margin-left: 70%;
+
+}
+
 .preview-wish-img {
   object-fit: cover;
   width: 200px;
   height: 200px;
+  float: right;
+  margin: 10px;
 }
 
 .party-form {
-  background-color: violet;
-  margin: 5% 10% 2% 10%;
-  padding: 5%;
-
+  margin: 1% 10% 2% 10%;
+  padding: 1% 5% 5% 5%;
 }
 
 .party-list {
   background-color: white;
   margin: 2% 10% 10% 10%;
-  padding: 5%;
+  padding: 1%;
   border-radius: 10px;
 }
 
@@ -181,37 +242,49 @@ a:hover {
   margin-top: 10px;
 }
 
+
 .selected-caption: {
+  font-family: 'PT Sans';
   font-weight: bold;
   font-size: 1.2em;
   }
 
-.friends {
-  text-align: center;
-  padding-top: 30px;
+.selected-price {
+  font-size: 1.2em;
 }
 
+.friends {
+  text-align: center;
+  padding: 30px;
+}
+
+.rating {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .friend-count {
   font-size: 1.3em;
-  margin: 0px 0px 0px 30px;
+  margin: 0px 0px 0px 55px;
   color: white;
 }
 
 #each-friend {
   float: left;
-  margin: 30px;
+  margin: 50px;
 
 }
 
 #friend-name {
   font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 10px;
 }
 
 #friend-pic {
   width: 100%;
   height: 100%;
-  max-width: 130px;
-  max-height: 130px;
+  max-width: 200px;
+  max-height: 200px;
   object-fit: cover;
   border-radius: 10px;
 
@@ -246,9 +319,9 @@ a:hover {
 
 .find-users {
   float: right;
-  margin-right: 10%;
-  padding-right: 2em;
-  padding-bottom: 0.8em;
+  margin-top: 30px;
+  margin-left: 50px;
+  position: relative;
 }
 
 .each-request {
@@ -258,6 +331,10 @@ a:hover {
 
 .friends {
   margin: 3%;
+}
+
+.no-wish {
+  text-align: center;
 }
 
 .no-result {
@@ -270,16 +347,22 @@ a:hover {
   padding-top: 2em;
 }
 
+.names {
+  margin-right: 4%;
+  font-size: 2em;
+  font-family: 'Shadows Into Light';
+}
 .propic {
   object-fit: cover;
 }
 
 #countdown {
-  text-align: right;
-  padding-right: 10%;
-  font-size: 2em;
+  margin-top: 17%;
+  padding: 10%;
+  font-size: 6em;
   color: green;
-  font-family: 'PT Sans';
+  font-family: 'Exo 2';
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 #msg {
@@ -302,6 +385,104 @@ a:hover {
   border: 1px solid;
   width: 100px;
   border-radius: 10px;
+}
+
+.location-box {
+  width: 250px;
+}
+
+.lights {
+  object-fit: contain;
+  width: 100%;
+  height: 100px;
+}
+.my-wish-list {
+  font-family: 'Shadows Into Light';
+  font-size: 3em;
+  margin-left: 10px;
+}
+
+.form-row {
+  display: flex;
+  margin: 40px;
+}
+
+.form-row-attendees {
+  display: flex;
+  margin-left: 40px;
+}
+
+.form-row-santa {
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+
+.date-box {
+  width: 250px;
+}
+
+
+.input-rank {
+  border: 1px solid rgba(34, 36, 38, .15);
+  max-width: 100%;
+  margin: 0;
+  -webkit-box-flex: 1;
+  flex: 1 0 auto;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  line-height:1.21428571em;
+  padding: .67857143em 1em;
+  border-radius: .28571429rem;
+  margin-left: 20px;
+}
+
+.filter-result {
+  padding-right: 10.5em;
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 0 0 .28571429rem .28571429rem;
+  background: #fff;
+  transform-origin: center top;
+  border: 1px solid #d4d4d5;
+  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+  position: absolute;
+} 
+
+.submit-button {
+  float:right;
+  border: 1px solid rgba(34, 36, 38, .15);
+  max-width: 100%;
+  margin: 0;
+  -webkit-box-flex: 1;
+  flex: 1 0 auto;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  line-height:1.21428571em;
+  padding: .67857143em 1em;
+  border-radius: .28571429rem;
+  margin-left: 20px;
+  background-color: white;
+
+}
+
+.input-date {
+  border: 1px solid rgba(34, 36, 38, .15);
+  max-width: 100%;
+  margin: 0;
+  -webkit-box-flex: 1;
+  flex: 1 0 auto;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  line-height:1.21428571em;
+  padding: .67857143em 1em;
+  border-radius: .28571429rem;
+  margin-left: 20px;
+}
+
+.input-location {
+  margin-left: 20px;
 }
 
 
@@ -364,6 +545,93 @@ height: 50px;
 .ui.card.friend-request {
   margin-left: 2%;
   width: 10%;
+}
+
+
+.participants-box {
+  width: 250px;
+}
+
+.max-box {
+  width: 250px;
+}
+
+.input-max {
+    margin-left: 20px;
+}
+
+.submit-box {
+  float: right;
+}
+
+.hosted-by {
+  font-size: 2em;
+  margin-right: 20px;
+  font-family: 'Lobster', cursive;
+}
+
+.location {
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+.date {
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+
+.party-date {
+  margin-right: 8%;
+  font-size: 2em;
+  font-family: 'Shadows Into Light';
+}
+
+.party-location {
+  margin-right: 8%;
+  font-size: 2em;
+  font-family: 'Shadows Into Light';
+}
+
+.attendees {
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+.party-max-amount {
+  font-size: 2em;
+  font-family: 'Shadows Into Light';
+  
+}
+
+
+.max-amount {
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 2%;
+
+}
+
+.participants {
+  font-size: 1.5em;
+}
+
+a.name-link {
+  text-decoration: underline;
+  }
+
+.select {
+  width: 400px;
+  margin-left: 20px;
+}
+
+.secret-santa {
+  font-size: 1.8em;
+  font-family: 'Shadows Into Light';
+  float: right;
 }
 
 .ui.dimmer {

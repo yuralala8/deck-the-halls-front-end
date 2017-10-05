@@ -45,13 +45,11 @@ class Search extends React.Component{
 
 	render(){
 
-		console.log(this.props.data)
-
 	
 		return(
 			<div>
 				<form className="shop" onSubmit={this.handleSubmit}>
-					<Input placeholder="What do you want for Christmas ?" action='Get me this!' onChange={this.handleChange}/>
+					<Input placeholder="What do you wish for Christmas ?" action='Get me this!' onChange={this.handleChange}/>
 				</form>
 			<SearchResults showAddForm={this.state.showAddForm} defaultImg={this.state.defaultImg} showForm={this.handleForm} hideForm={this.hideForm} currentUserId = {this.props.currentUserId} selectedItem={this.state.selectedItem}/>
 			</div>

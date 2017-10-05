@@ -76,7 +76,7 @@ class WishListContainer extends React.Component {
 					{ this.props.currentUserId === this.props.id ? modal : null}
 
 	        	</div>
-	        	<WishList currentUserId={this.props.currentUserId} id={this.props.id} handleDelete={this.handleDelete} wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
+	        	<WishList currentUserId={this.props.currentUserId} userProfile={this.props.userProfile} id={this.props.id} handleDelete={this.handleDelete} wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
 				
 			</Card>
 		)

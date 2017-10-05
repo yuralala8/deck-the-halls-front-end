@@ -5,6 +5,7 @@ import { savingWish } from '../actions/wishes'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import { Button, Input, Form } from 'semantic-ui-react'
+import Rating from 'react-rating'
 
 class WishForm extends React.Component {
 	constructor(){
@@ -88,8 +89,10 @@ class WishForm extends React.Component {
   					<p className="browse">Browse...</p>
 					</Dropzone></div>
 				<div>{this.state.itemImage.length > 0 ? <img src={this.state.itemImage} className="preview-wish-img"/> : null}</div>
+				<div className="buttons">
 				<Button size="medium" onClick={this.handleClick}>cancel</Button>
 				<Input type="submit" value="Save to my list" />
+				</div>
 			</Form>
 		</div>
 		)

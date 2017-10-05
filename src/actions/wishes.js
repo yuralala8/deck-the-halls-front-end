@@ -80,7 +80,7 @@ export function addWish(item) {
 
 
 export function deleteWish(wishId) {
-  console.log(wishId)
+  // console.log(wishId)
   return function(dispatch) {
     const jwtToken = localStorage.getItem("jwt")
 

@@ -13,7 +13,7 @@ const Countdown = () => {
       let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
       let seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-      document.getElementById('countdown').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s " + "until Christmas 2017!"
+      document.getElementById('countdown').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s " 
 
   }, 1000)
 

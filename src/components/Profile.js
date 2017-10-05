@@ -6,6 +6,7 @@ import WishListContainer from './WishListContainer'
 import UserInfoContainer from './UserInfoContainer'
 import { Card, Feed, Icon, Button } from 'semantic-ui-react'
 
+
 class Profile extends React.Component {
 
 	constructor(){
@@ -93,7 +94,9 @@ class Profile extends React.Component {
 			
 				{(this.props.currentUserId == this.props.match.params.id) ? <Card className="request"><Card.Content><Icon name='user'/> Friend Requests: {req} </Card.Content></Card> : <Card className="request"><Card.Content><Icon name='user'/>{button}</Card.Content></Card>}
 				
-				<WishListContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId}/>
+
+				<WishListContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
+		
 				
 			
 				</div>
