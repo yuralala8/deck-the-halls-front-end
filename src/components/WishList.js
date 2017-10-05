@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Rating } from 'semantic-ui-react'
 
 const WishList = (props) => {
 
@@ -19,7 +19,7 @@ const WishList = (props) => {
 				<div className="valignment">
 				<div className="more-info">{wish.item_link !== "" ? <a className="more-info" href={wish.item_link} target="_blank">More Info</a> : null}</div><br/>
 				<div className="price"> ${wish.item_price}</div>
-				 <div className="rank">{wish.item_rank}</div>
+				 <div className="rank"><Rating icon='heart' rating={wish.item_rank} maxRating={5} disabled /></div>
 				</div>
 			</div>
 			))}

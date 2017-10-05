@@ -5,7 +5,7 @@ import { savingWish } from '../actions/wishes'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import { Button, Input, Form } from 'semantic-ui-react'
-import Rating from 'react-rating'
+import { Rating } from 'semantic-ui-react'
 
 class WishForm extends React.Component {
 	constructor(){
@@ -24,7 +24,6 @@ class WishForm extends React.Component {
 		this.setState({
 			itemDescription: this.refs.description.value,
 			itemLink: this.refs.link.value,
-			itemRank: this.refs.rank.value,
 			itemPrice: this.refs.price.value
 		})
 	}
@@ -41,6 +40,13 @@ class WishForm extends React.Component {
 			itemRank: "",
 			itemPrice: ""
 		})
+	}
+
+	handleRating = (event, rate) => {
+		this.setState({
+			itemRank: rate.rating
+		})
+		
 	}
 
 
@@ -77,12 +83,14 @@ class WishForm extends React.Component {
 
 	render() {
 
+		console.log("THIS IS RATE!!!", this.state.itemRank)
+
 	return (
 		<div>
 			<Form onSubmit={this.handleSubmit}>
 				<div>Item Description <input size="mini" ref="description" type="text" onChange={this.handleChange} /></div>
 				<div>Link <input size="mini" ref="link" type="text" onChange={this.handleChange} /></div>
-				<div>Priority <input size="mini" ref="rank" type="text" onChange={this.handleChange} /></div>
+				<div>Priority<Rating icon="heart" maxRating={5} onRate={this.handleRating} /></div>
 				<div>Price $<input size="mini" ref="price" type="text" onChange={this.handleChange} /></div>
 				<div>Attach an image: 
 					<Dropzone className="upload-img" onDrop={this.handleDrop} multiple accept="image/*">

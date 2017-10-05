@@ -1,6 +1,7 @@
 import React from 'react'
 import { addWish } from '../actions/wishes'
 import { connect } from 'react-redux'
+import { Rating } from 'semantic-ui-react'
 
 
 class ShowAddForm extends React.Component {
@@ -16,28 +17,36 @@ class ShowAddForm extends React.Component {
 		}
 	}
 
-	handleChange = (event) => {
+	handleChange = (event, rate) => {
+		console.log(rate)
 		this.setState({
 			itemDescription: this.props.selectedItem.caption,
 			itemLink: this.props.selectedItem.prodContainerUrl ? `https://www.shop.com${this.props.selectedItem.prodContainerUrl}` : "",
 			itemImage: this.props.selectedItem.imageURI,
-			itemRank: this.refs.rank.value,
+			itemRank: rate.rating,
 			itemPrice: this.props.selectedItem.localPrice
 		})
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		console.log(this.state)
-		this.props.addToList(this.state)
-		this.setState({
-			itemRank: ""
-		})
-		window.location = `/profile/${this.props.currentUserId}`
+
+		if (this.state.itemRank){
+			this.props.addToList(this.state)
+			console.log("submitting", this.state)
+			this.setState({
+				itemRank: ""
+			})
+			window.location = `/profile/${this.props.currentUserId}`
+		} else {
+			alert("Please rate this!")
+		}
 
 	}
 
+
 render(){
+
 	
 	return(
 		<div>
@@ -45,7 +54,7 @@ render(){
 			 	<div className="selected-caption"> {this.props.selectedItem.caption}</div>
 			 	<img className="selected-img" src={this.props.selectedItem.imageURI}/>
 			 	<div className="selected-price">Price: ${this.props.selectedItem.localPrice}</div>
-			 	Wish Priority Level:<input className="input-rank" type="text" ref="rank" onChange={this.handleChange}/>
+			 	Desire Level <Rating icon="heart" maxRating={5} className="input-rank" onRate={this.handleChange}/>
 			 	<input type="submit" className="submit-button"/>
 		 	</form>
 	  </div>
