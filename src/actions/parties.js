@@ -47,3 +47,23 @@ export function getParties(detail) {
       })
   }
 }
+
+export function deleteParty(partyId) {
+  // console.log(wishId)
+  return function(dispatch) {
+    const jwtToken = localStorage.getItem("jwt")
+
+      fetch(`http://localhost:3000/api/v1/parties/${partyId}`,{
+          method: 'post',
+          headers: {
+            "Authorization": `Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+        })
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch({type:"DELETE_PARTY", payload: json})
+      })
+  }
+}

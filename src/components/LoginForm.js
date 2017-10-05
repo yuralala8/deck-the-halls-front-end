@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import Countdown from './Countdown'
 import { Input } from 'semantic-ui-react'
+import bells2 from '../images/bells2.png'
 
 class LoginForm extends React.Component {
 

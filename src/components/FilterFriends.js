@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { searchUser } from '../actions/user'
-import { Input } from 'semantic-ui-react'
+import AutoComplete from 'material-ui/AutoComplete';
 
 class FilterFriends extends React.Component {
 
@@ -15,34 +15,48 @@ class FilterFriends extends React.Component {
 	}
 
 
-	handleInput = (event) => {
+	handleInput = (value) => {
 		this.props.fetchData()
 		this.setState({
-			searchTerm: event.target.value,
+			searchTerm: value,
 			fetched: true
 		})
-	
+		// console.log("this is the value", value)
 	}
 
-	handleClick(user) {
-		console.log("clicked")
-		window.location = `/profile/${user.id}`
+	handleClick(value) {
+		console.log("clicked", value)
+		if (value.id !== undefined) {
+
+		window.location = `/profile/${value.id}`
+		}
 	}
 
 	render(){
-	
-		let users = this.props.data.filter(user => user.username.includes(this.state.searchTerm))
+
+		let users = this.props.data
+
+		const dataSourceConfig = {
+			text: 'username',
+			value: 'id'
+		}
+
 		return (
-			<div className="find-users" >
-				<Input icon='users' iconPosition='left' placeholder="Search users..." type="text" onChange={this.handleInput}/>
-				<div>
-				{this.state.searchTerm == "" ? null : users.map(user => <p className="filter-result" onClick={() =>this.handleClick(user)}>{user.username}</p>)}
-				</div>
+			<div className="filter-input">
+
+				<AutoComplete
+					className="input-filter-friends"
+					hintText="Search Users..."
+					dataSource={users}
+					dataSourceConfig={dataSourceConfig}
+					onUpdateInput={this.handleInput}
+					onNewRequest={this.handleClick} 
+					underlineStyle={{display: "none"}}
+				/>
 			</div>
 			)
-
+		}
 	}
-}
 
 function mapStateToProps(state) {
 	return {

@@ -2,7 +2,7 @@ import React from 'react'
 import '../App.css'
 import { connect } from 'react-redux'
 import { searchUser } from '../actions/user'
-import { getParties } from '../actions/parties'
+import { getParties, deleteParty } from '../actions/parties'
 import lights from '../images/lights.png'
 
 
@@ -14,13 +14,15 @@ class PartyList extends React.Component {
 
 	}
 
-	handleDelete = () => {
-		// this.props.
-	}
+	handleDelete = (party) => {
+		this.props.deleteParty(party.info.id)
+ }
 
 
 	render(){
-		console.log("logging all users", this.props.allusers)
+		let myname = this.props.allusers.find(person => person.id == this.props.currentUserId)
+		console.log("HERE IS MY NAME", myname)
+		if (this.props.parties.length > 0) {
 
 			return (
 					<div className="party-list">
@@ -28,7 +30,8 @@ class PartyList extends React.Component {
 					{this.props.parties.map((party, index) => (
 						<div className="each-party" key={index}>
 						<p>
-							<div><button className="delete" onClick={this.handleDelete}>x</button></div>
+							
+							{party.info.host_name == myname.username ? <div><button className="delete" onClick={() => this.handleDelete(party)}>x</button></div> : null}
 							<div className="hosted-by">You've been invited to a party hosted by . . . {party.info.host_name} !</div>
 							<img src={lights} className="lights"/>
 
@@ -57,7 +60,14 @@ class PartyList extends React.Component {
 					)}
 					
 					</div>
+					) } else {
+				return (
+
+					<div className="party-list">
+						<p className="no-party">You have no upcoming parties.</p>
+					</div>
 					)
+			}
 	}
 
 }
@@ -82,7 +92,10 @@ function mapDispatchToProps(dispatch) {
 		},
 		searchUser: () => {
 			dispatch(searchUser())
-			}
+			},
+		deleteParty: (partyId) => {
+			dispatch(deleteParty(partyId))
+		}
 	}
 }
 

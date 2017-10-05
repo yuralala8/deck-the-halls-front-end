@@ -65,6 +65,7 @@ class PartyForm extends React.Component {
 		})
 	}
 
+ // <img src={milkcookies} className="invite-logo"/>
 	render(){
 
 		let friends = this.props.myfriends.map(friend => friend.username)
@@ -96,7 +97,7 @@ class PartyForm extends React.Component {
 						</div>
 					</div>
 
-				 <img src={milkcookies} className="invite-logo"/>
+				
 					 	<div className="submit-box"><Input type="submit" value="host party!"/></div>
 
 				 </form>
