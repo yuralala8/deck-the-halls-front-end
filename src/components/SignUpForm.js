@@ -58,6 +58,8 @@ class SignUpForm extends React.Component {
            </div>
             </form> 
 
+            <p className="error"> {this.props.error ? this.props.error : null}</p>
+
             <p className="form-row-login-register">
               Already Registered? <Link to={`/login`}>Log In</Link></p>
         </div>

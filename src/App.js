@@ -9,7 +9,7 @@ import Auth from './adapters/auth'
 import ViewFriends from './components/ViewFriends'
 import { Route, Redirect } from 'react-router-dom'
 import Party from './components/Party'
-
+import AlertContainer from 'react-alert'
 
 class App extends Component {
   constructor(){
@@ -29,19 +29,33 @@ class App extends Component {
     })
   }
 
+  alertOptions = {
+    offset: 14,
+    position: 'top left',
+    theme: 'dark',
+    time: 3000,
+    transition: 'scale'
+  }
+
 
    loginUser = (userParams) => {
     Auth.login(userParams)
       .then(user =>  {
          console.log("user", user)
+      if (user.user) {
         this.setState({
           currentUser: user,
           isLoggedIn: true
         }, this.setLocalstorage(user))
         console.log(this.state, "logged in")
         window.location.assign(`/profile/${user.user.id}`)
-        
+
+      } else if (user.error) {
+        console.log("invalid username or password")
+        this.msg.error('Invalid username or password')
+      }
       })
+
 
   }
 
@@ -53,14 +67,21 @@ class App extends Component {
      signUpUser = (userParams) => {
     Auth.signup(userParams)
       .then(user => {
+        if (user.user) {
         this.setState({
           currentUser: user,
           isLoggedIn: true
         }, this.setLocalstorage(user))
         console.log(this.state, "signed up, logged in")
         window.location.assign(`/profile/${user.user.id}`)
+      } else if (user.error) {
+        console.log(userParams)
+        this.msg.error(`${userParams.username} ${user.error.username[0]}`)
+      }
       })
   }
+
+
 
 
   render() {
@@ -69,11 +90,12 @@ class App extends Component {
 
     return (
       <div>
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         
         <Navbar isLoggedIn={localStorage.getItem('jwt')} currentUserId = {currentUserId}/>
 
          {localStorage.getItem('jwt') ? null : <Redirect to= "/login"/>}
-        <Route path="/login" render={(props) => <LoginForm {...props} onLogin={this.loginUser}/> }/>
+        <Route path="/login" render={(props) => <LoginForm {...props} onLogin={this.loginUser} /> }/>
         <Route path="/signup" render={(props) => <SignUpForm {...props} onSignUp={this.signUpUser} /> }/>
         <Route path={"/profile/:id"} render={props => <Profile isLoggedIn={this.state.isLoggedIn} currentUserId={this.state.currentUser.user.id} {...props}/>}/>
         <Route path="/search" render={() => <Search currentUserId = {currentUserId} /> }/>

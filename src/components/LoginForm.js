@@ -5,6 +5,7 @@ import Countdown from './Countdown'
 import { Input } from 'semantic-ui-react'
 import bells2 from '../images/bells2.png'
 
+
 class LoginForm extends React.Component {
 
   state = {
@@ -53,7 +54,6 @@ class LoginForm extends React.Component {
               <Input className="login-button" type="submit" value="Log In"/>
             </div>
             </form>
-
             
             <p className="form-row-login-register">
               First Visit? <Link to={`/signup`}>Register!</Link>
