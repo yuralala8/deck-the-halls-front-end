@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { sendRequest, fetchRequest, searchUser, acceptRequest, myFriends, ignoreRequest } from '../actions/user'
 import WishListContainer from './WishListContainer'
 import UserInfoContainer from './UserInfoContainer'
-import { Card, Feed, Icon, Button } from 'semantic-ui-react'
-
+import { Loader, Card, Feed, Icon, Button } from 'semantic-ui-react'
 
 class Profile extends React.Component {
 
@@ -37,9 +36,10 @@ class Profile extends React.Component {
 		this.props.ignoreRequest(friendId)
 	}
 
-
+	
 	render(){
 	
+
 
 			let button = null;
 			let currentUserId = this.props.currentUserId
@@ -68,8 +68,8 @@ class Profile extends React.Component {
 			}
 			
 			if (requests) {
+			
 				req = requests.map(request =>  
-					
 					<div className="each-request">
 					{users.find(user => user.id == request.user_id).propic != null ? <img src={users.find(user => user.id == request.user_id).propic} className="requester-img"/> : <img src={this.state.defaultImg} className="requester-img" /> }
 					<p className="friend-request">
@@ -102,7 +102,12 @@ class Profile extends React.Component {
 				</div>
 			)
 		} else {
-			return <div> I'm loading!</div>
+			return <div> 
+
+				<Loader active inline='centered' />
+
+
+			 </div>
 		}
 	}
 }

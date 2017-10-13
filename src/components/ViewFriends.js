@@ -20,7 +20,8 @@ class ViewFriends extends React.Component {
 			<p className="friend-count">You have {this.props.myfriends.length} friends</p>
 			{this.props.myfriends.map((friend, index) => (
 				<div id="each-friend" key={index}>
-					{friend.pro_pic == null ? <img src="https://lh3.googleusercontent.com/cy27QjEFLkmWOVyfj5v3rZA0j6VhD5u2ct_PqUToWHFSEyhpUnAkXcQRKw4RSasgyRVI=w300" id="friend-pic"/> : <img src={friend.pro_pic} id="friend-pic"/>}
+					
+					{friend.pro_pic == null ? <img src="/profile.png" id="friend-pic"/> : <img src={friend.pro_pic} id="friend-pic"/>}
 					<div id="friend-name"><a href={`/profile/${friend.id}`}>@{friend.username}</a></div>
 				</div>
 				))}
