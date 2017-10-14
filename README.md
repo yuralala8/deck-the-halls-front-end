@@ -5,11 +5,11 @@ Prepare for this year’s holiday season by making a wish list and sharing it wi
 
 ## Demo
 
-- [Link to Video Demo on YouTube](https://youtu.be/YbRbgzoubHI)
+[Link to Video Demo on YouTube](https://youtu.be/YbRbgzoubHI)
 
 ## Wireframes
 
-- [Link to Component Markup](https://www.dropbox.com/s/lknwk3ug2lxhwco/DeckTheHalls.pdf?dl=0)
+[Link to Component Markup](https://www.dropbox.com/s/lknwk3ug2lxhwco/DeckTheHalls.pdf?dl=0)
 
 ## Technologies
 * ReactJS
