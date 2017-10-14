@@ -27,4 +27,5 @@ Users can search for other users and add them as friends. Once added, a request 
 ## Server
 
 This client-side requires running a rails server.
-[Link to Deck the Halls - Rails Server](https://github.com/yuralala8/deck-the-halls-back-end)
+
+* [Link to Deck the Halls - Rails Server](https://github.com/yuralala8/deck-the-halls-back-end)
