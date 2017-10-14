@@ -1,7 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+### Deck the Halls
 
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+Prepare for this year’s holiday season by making a wish list and sharing it with friends. Generate a Secret Santa for all the party attendees and send out invitations.
+
 
 ## Table of Contents
 
