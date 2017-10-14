@@ -4,7 +4,9 @@ Prepare for this year’s holiday season by making a wish list and sharing it wi
 
 ## Introduction
 
+In order to use this web app, users must sign up and log in. Users can edit their profile with their own image file and add a bio. Users can also add wishes to their wish list by either using the item search functionality under 'Shopping Ideas', or manually creating their own wish by adding details.
 
+Users can search for other users and add them as friends. Once added, a request is pending until the other user accepts the request. When the other user accepts the request, a mutual friendship is established and each user is viewable under 'View Friends.' Users can also create parties and add their friends as participants to each party. Each party generates a Secret Santa for each participant. This is randomized. On the instance of hosting a party, every participant will receive the invitation with party details on it, and each user will be able to see the name of the person he/she is a secret santa for.
 
 ## Demo
 
