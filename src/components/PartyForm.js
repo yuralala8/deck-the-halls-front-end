@@ -43,11 +43,20 @@ class PartyForm extends React.Component {
 		})
 	}
 
+
 	handleSubmit = (event) => {
 		event.preventDefault()
-
+		if (this.state.location === ""){
+			alert("Please enter location")
+		} else if (this.state.date === ""){
+			alert("Please select a date")
+		} else if (this.state.amount === ""){
+			alert("Please enter the amount")
+		} else if (this.state.participants.length === 0){
+			alert("Please add participants")
+		} else {
 		this.props.createParty(this.state)
-
+		}
 		this.setState({
 			location: "",
 			date: "",
@@ -64,6 +73,7 @@ class PartyForm extends React.Component {
 			participants: val.map(person => person.value)
 		})
 	}
+
 
  // <img src={milkcookies} className="invite-logo"/>
 	render(){
