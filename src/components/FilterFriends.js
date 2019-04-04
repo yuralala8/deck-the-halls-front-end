@@ -11,9 +11,7 @@ class FilterFriends extends React.Component {
 			searchTerm: "",
 			fetched: false
 		}
-
-	}
-
+	 }
 
 	handleInput = (value) => {
 		this.props.fetchData()
@@ -21,7 +19,6 @@ class FilterFriends extends React.Component {
 			searchTerm: value,
 			fetched: true
 		})
-		// console.log("this is the value", value)
 	}
 
 	handleClick(value) {
@@ -43,7 +40,6 @@ class FilterFriends extends React.Component {
 
 		return (
 			<div className="filter-input">
-
 				<AutoComplete
 					className="input-filter-friends"
 					hintText="Search Users..."

@@ -3,7 +3,6 @@ import PartyForm from './PartyForm'
 import PartyList from './PartyList'
 
 const Party = (props) => {
-
 		return(
 			<div>
 				<div className="party-container">
@@ -11,7 +10,7 @@ const Party = (props) => {
 					<PartyList currentUserId={props.currentUserId}/>
 				</div>
 			</div>
-			)
+		)
 }
 
 export default Party

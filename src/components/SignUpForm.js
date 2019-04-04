@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Countdown from './Countdown'
 import { Input } from 'semantic-ui-react'
 
-
 class SignUpForm extends React.Component {
 
   state = {

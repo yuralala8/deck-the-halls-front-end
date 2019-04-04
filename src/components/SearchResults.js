@@ -11,10 +11,8 @@ const SearchResults = (props) => {
 		props.showForm(item)
 	}
 
-
 	let items = (props.data ? props.data.slice(0, 20).map((item, index) => (
 			<div className="each-result" key={index}>
-
 				<Modal 
 					open={props.showAddForm}
 					onClose={props.hideForm}
@@ -30,7 +28,6 @@ const SearchResults = (props) => {
 						currentUserId = {props.currentUserId}
 					/>
 				</Modal.Content>
-
 				</Modal>
 
 				<div className="caption">{item.caption.length > 20 ? item.caption.slice(0, 60) + "..." : item.caption}</div>
@@ -50,7 +47,6 @@ const SearchResults = (props) => {
 		)
 
 }
-
 
 function mapStateToProps(state) {
 	return {

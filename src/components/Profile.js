@@ -15,13 +15,11 @@ class Profile extends React.Component {
 		}
 	}
 
-
 	componentDidMount = () => {
 		this.props.fetchRequest(this.props.currentUserId)
 		this.props.viewFriends(this.props.currentUserId)
 		this.props.fetchData()
 	}
-
 
 	handleClick = (friendId) => {
 		this.props.sendRequest(friendId)
@@ -36,19 +34,15 @@ class Profile extends React.Component {
 		this.props.ignoreRequest(friendId)
 	}
 
-	
 	render(){
 	
+		let button = null;
+		let currentUserId = this.props.currentUserId
+		let currentProfileId = this.props.match.params.id
 
-
-			let button = null;
-			let currentUserId = this.props.currentUserId
-			let currentProfileId = this.props.match.params.id
-
-			let req = null;
-			let users = this.props.data
-			let requests = this.props.pendingReceived
-
+		let req = null;
+		let users = this.props.data
+		let requests = this.props.pendingReceived
 
 		if (this.props.data.length > 0){		
 			if (currentUserId != currentProfileId){
@@ -85,36 +79,25 @@ class Profile extends React.Component {
 				req
 			}
 
-
-				
 			return(
 				<div>
-			
-				<UserInfoContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
-			
-				{(this.props.currentUserId == this.props.match.params.id) ? <Card className="request"><Card.Content><Icon name='user'/> Friend Requests: {req} </Card.Content></Card> : <Card className="request"><Card.Content><Icon name='user'/>{button}</Card.Content></Card>}
-				
-
-				<WishListContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
-		
-				
-			
+  				<UserInfoContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
+  				{(this.props.currentUserId == this.props.match.params.id) ? <Card className="request"><Card.Content><Icon name='user'/> Friend Requests: {req} </Card.Content></Card> : <Card className="request"><Card.Content><Icon name='user'/>{button}</Card.Content></Card>}
+  				<WishListContainer id={this.props.match.params.id} currentUserId={this.props.currentUserId} userProfile={this.props.data}/>
 				</div>
 			)
 		} else {
-			return <div> 
-
-				<Loader active inline='centered' />
-
-
+			return (
+        <div> 
+				  <Loader active inline='centered' />
 			 </div>
+       )
 		}
 	}
 }
 
 
 function mapStateToProps(state) {
-	
 	return {
 		pendingReceived: state.users.pendingReceived,
 		pendingSent: state.users.pendingSent,
@@ -127,7 +110,6 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
-
 	return {
 		sendRequest: (friendId) => {
 			dispatch(sendRequest(friendId))
@@ -149,6 +131,5 @@ function mapDispatchToProps(dispatch) {
 			}
 	}
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

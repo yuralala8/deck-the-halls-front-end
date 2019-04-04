@@ -2,13 +2,13 @@ export function searchUser() {
   return function(dispatch) {
     const jwtToken = localStorage.getItem("jwt")
    		fetch('http://localhost:3000/api/v1/searches',{
-          method: 'get',
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'get',
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then((json) => {
         dispatch({type:"FETCH_USER", payload: json})
@@ -27,14 +27,14 @@ export function sendRequest(friendId) {
     const body = JSON.stringify({friendId, currentUser})
     
       fetch('http://localhost:3000/api/v1/friendships',{
-          method: 'post',
-          body: body,
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'post',
+        body: body,
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then(json => {
         dispatch({type:"SEND_REQUEST", payload: json})
@@ -51,14 +51,14 @@ export function acceptRequest(friendId) {
     const body = JSON.stringify({friendId, currentUser})
 
       fetch('http://localhost:3000/api/v1/accept',{
-          method: 'post',
-          body: body,
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'post',
+        body: body,
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then(json => {
         dispatch({type:"ACCEPT_REQUEST", payload: json})
@@ -76,14 +76,14 @@ export function ignoreRequest(friendId) {
     const body = JSON.stringify({friendId, currentUser})
 
       fetch('http://localhost:3000/api/v1/delete',{
-          method: 'post',
-          body: body,
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'post',
+        body: body,
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then(json => {
         dispatch({type:"DELETE_REQUEST", payload: json})
@@ -98,13 +98,13 @@ export function fetchRequest(currentUser) {
     const jwtToken = localStorage.getItem("jwt")
 
       fetch(`http://localhost:3000/api/v1/requests/${currentUser}`,{
-          method: 'get',
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'get',
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then(json => { 
         dispatch({type:"FETCH_REQUEST", payload: json})
@@ -120,13 +120,13 @@ export function myFriends(currentUser) {
     const jwtToken = localStorage.getItem("jwt")
 
       fetch(`http://localhost:3000/api/v1/friendships/${currentUser}`,{
-          method: 'get',
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'get',
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then(json => { 
         dispatch({type:"SHOW_FRIENDS", payload: json})
@@ -144,14 +144,14 @@ export function sendUserInfo(userInfo) {
     const body = JSON.stringify({userInfo})
 
       fetch('http://localhost:3000/api/v1/userinfo',{
-          method: 'post',
-          body: body,
-          headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
-        })
+        method: 'post',
+        body: body,
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`,
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      })
       .then((res) => res.json())
       .then(json => {
         dispatch({type:"SEND_USERINFO", payload: json})

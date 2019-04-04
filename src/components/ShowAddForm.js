@@ -44,10 +44,8 @@ class ShowAddForm extends React.Component {
 
 	}
 
-
 render(){
 
-	
 	return(
 		<div>
 		 	<form onSubmit={this.handleSubmit}>

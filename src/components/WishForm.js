@@ -83,8 +83,6 @@ class WishForm extends React.Component {
 
 	render() {
 
-		console.log("THIS IS RATE!!!", this.state.itemRank)
-
 	return (
 		<div>
 			<Form onSubmit={this.handleSubmit}>
@@ -107,7 +105,6 @@ class WishForm extends React.Component {
 
 	}
 }
-
 
 function mapDispatchToProps(dispatch) {
 	return {

@@ -2,9 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchResults } from '../actions/shopping'
 
-
 class AddToList extends React.Component {
-
 
 	render(){
 		return(
@@ -13,7 +11,6 @@ class AddToList extends React.Component {
 			)
 	}
 }
-
 
 function mapStateToProps(state) {
 	return {
@@ -28,6 +25,5 @@ function mapDispatchToProps(dispatch) {
 		}
 	}
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddToList)

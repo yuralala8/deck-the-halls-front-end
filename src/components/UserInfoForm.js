@@ -58,29 +58,22 @@ class UserInfoContainer extends React.Component {
 	  // });
 	}
 
-	
-
 	render(){
 		return(
 			<div>
 				<Form id="profile" onSubmit={this.handleSubmit}>
-					
 					<Header icon='id card outline' content='Update Profile'/>
-					
 					<div className="propic-img"> Upload Profile Image: 
 						<Dropzone className="upload-img" onDrop={this.handleDrop} multiple accept="image/*">
-	  						<p className="browse">Browse...</p>
+	  					<p className="browse">Browse...</p>
 						</Dropzone></div>
 					<div className="propic-preview">{this.state.profileImage.length > 0 ? <img src={this.state.profileImage} className="propic-preview" width="200px" height="200px"/> : null}</div>
-
 					<div className="bio"> Add Bio: <br/><TextArea form="profile" type="text" value={this.state.userBio} onChange={this.handleChange} placeholder="Write about yourself" /></div><br/>
-
 					<div className="buttons">
 					<Button onClick={this.handleClick}>cancel</Button>
 					<Input type="submit" value="Update Profile" />
 					<br/>
 					</div>
-					
 				</Form>
 			</div>
 			)
@@ -88,20 +81,17 @@ class UserInfoContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-	
 	return {
 		userProfile: state.users.userInfo
 	}
 }
 
 function mapDispatchToProps(dispatch) {
-
 	return {
 		sendUserInput: (userInfo) => {
 			dispatch(sendUserInfo(userInfo))
 		}
 	}
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfoContainer)

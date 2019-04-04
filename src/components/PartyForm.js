@@ -74,8 +74,6 @@ class PartyForm extends React.Component {
 		})
 	}
 
-
- // <img src={milkcookies} className="invite-logo"/>
 	render(){
 
 		let friends = this.props.myfriends.map(friend => friend.username)
@@ -107,25 +105,21 @@ class PartyForm extends React.Component {
 						</div>
 					</div>
 
-				
 					 	<div className="submit-box"><Input type="submit" value="host party!"/></div>
-
 				 </form>
-			</div>
+			 </div>
 			)
 	}
 }
 
 
 function mapStateToProps(state) {
-
 	
 	return {
 		myfriends: state.users.friends,
 		parties: state.parties.parties
 	}
 }
-
 
 function mapDispatchToProps(dispatch) {
 

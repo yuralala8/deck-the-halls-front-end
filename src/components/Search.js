@@ -15,7 +15,6 @@ class Search extends React.Component{
 		}
 	}
 
-
 	handleSubmit = (event) => {
 		event.preventDefault()
 		this.props.fetchData(this.state.searchTerm)
@@ -45,7 +44,6 @@ class Search extends React.Component{
 
 	render(){
 
-	
 		return(
 			<div>
 				<form className="shop" onSubmit={this.handleSubmit}>

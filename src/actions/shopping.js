@@ -5,14 +5,14 @@ export function fetchResults(searchTerm) {
       method: 'post',
       body: JSON.stringify({"search_term":searchTerm}),
       headers: {
-            "Authorization": `Bearer ${jwtToken}`,
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-          }
+        "Authorization": `Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
     })
     .then(res => res.json())
     .then(json => {
-          dispatch({type:"FETCH_DATA", payload: json.searchItems})
-        })
+      dispatch({type:"FETCH_DATA", payload: json.searchItems})
+    })
   }
 }

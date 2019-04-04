@@ -1,9 +1,8 @@
 import React from 'react'
 
-
 const Countdown = () => {
-
-	let christmas = new Date("Dec 25, 2017 00:00:00").getTime();
+  // TODO reset the date to be xmas of the year after once it passes
+	let christmas = new Date("Dec 25, 2019 00:00:00").getTime();
    
     let x = setInterval(function() {
   
@@ -18,16 +17,9 @@ const Countdown = () => {
   }, 1000)
 
 	return (
-
-		<div>
-  
-			<div id="countdown"></div>
-			
-
-		</div>
+			<div id="countdown">
+      </div>
 		)
 }
-
-
 
 export default Countdown

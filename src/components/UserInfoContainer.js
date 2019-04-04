@@ -28,7 +28,6 @@ class UserInfoContainer extends React.Component {
 
 
 	render(){
-		console.log(this.state)
 		let user = this.props.userProfile.find(user => user.id == this.props.id)
 		let modal = <Modal 
 					open={this.state.showProfileForm}
@@ -46,25 +45,20 @@ class UserInfoContainer extends React.Component {
 		
 		
 		return(
-
 			<Card>
-				<p>{user.propic != null && user.propic != "" ? <Image className="propic" src={user.propic} alt="" width="300px" height="300px"/> : <Image src={this.state.defaultImg} alt="" width="300px" height="300px"/>} </p>
-			<Card.Content>
-			<Card.Header>
-				@{user.username}
-			{ this.props.currentUserId === this.props.id ? modal : null}
-			</Card.Header>
-			<Card.Description>
-				{user.bio}
-			</Card.Description>
-			
-			
-			</Card.Content>
-
+  			<p>{user.propic != null && user.propic != "" ? <Image className="propic" src={user.propic} alt="" width="300px" height="300px"/> : <Image src={this.state.defaultImg} alt="" width="300px" height="300px"/>} </p>
+  			<Card.Content>
+    			<Card.Header>
+    				@{user.username}
+            {this.props.currentUserId === this.props.id ? modal : null}
+    			</Card.Header>
+    			<Card.Description>
+    				{user.bio}
+    			</Card.Description>
+  			</Card.Content>
 			</Card>
-			)
+		)
 	}
 }
-
 
 export default (UserInfoContainer)

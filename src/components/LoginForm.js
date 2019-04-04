@@ -5,14 +5,12 @@ import Countdown from './Countdown'
 import { Input } from 'semantic-ui-react'
 import bells2 from '../images/bells2.png'
 
-
 class LoginForm extends React.Component {
 
   state = {
     usernameInput: "",
     passwordInput: ""
   }
-
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -41,34 +39,24 @@ class LoginForm extends React.Component {
   }
   render() {
     return (
-    <div>
-      <div className="login">
-            <form onSubmit={this.handleSubmit}>
-              <h1>Login</h1>     
-
-              <div className="form-row-login">
+      <div>
+        <div className="login">
+          <form onSubmit={this.handleSubmit}>
+            <h1>Login</h1>     
+            <div className="form-row-login">
               <div className="login-input">
-                  <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
-                  <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
+                <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.usernameInput}/>
+                <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.passwordInput} />
               </div>
               <Input className="login-button" type="submit" value="Log In"/>
             </div>
-            </form>
-            
-            <p className="form-row-login-register">
-              First Visit? <Link to={`/signup`}>Register!</Link>
-            </p>
-            
- 
+          </form>
+          <p className="form-row-login-register">First Visit? <Link to={`/signup`}>Register!</Link></p>
         </div>
-            <div className="countdown">        
-              <Countdown />
-            </div>
-        </div>
-       
+        <div className="countdown"><Countdown /></div>
+      </div>
     )
   }
 }
-
 
 export default LoginForm

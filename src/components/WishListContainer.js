@@ -20,7 +20,6 @@ class WishListContainer extends React.Component {
 		})
 	}
 
-
 	formSubmit = (wish) => {
 		this.setState({
 			showWishForm: false
@@ -32,7 +31,6 @@ class WishListContainer extends React.Component {
 			showWishForm: false
 		})
 	}
-
 
 	componentDidMount(){
 
@@ -46,9 +44,7 @@ class WishListContainer extends React.Component {
 		}
 	}
 
-
 	handleDelete = (wish) => {
-
 		this.props.deleteWish(wish.id)
 	}
 
@@ -72,20 +68,15 @@ class WishListContainer extends React.Component {
 		return(
 			<Card fluid color='red' className='wishlist-container'>
 				<div className="wish-form">
-
-					{ this.props.currentUserId === this.props.id ? modal : null}
-
-	        	</div>
-	        	<WishList currentUserId={this.props.currentUserId} userProfile={this.props.userProfile} id={this.props.id} handleDelete={this.handleDelete} wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
-				
+					{this.props.currentUserId === this.props.id ? modal : null}
+	      </div>
+	      <WishList currentUserId={this.props.currentUserId} userProfile={this.props.userProfile} id={this.props.id} handleDelete={this.handleDelete} wishList={this.props.wishList} showWishForm={this.state.showWishForm}/>
 			</Card>
 		)
 	}
 }
 
-
 function mapStateToProps(state) {
-
 	return {
 		wishList: state.wishes.wishList
 	}
