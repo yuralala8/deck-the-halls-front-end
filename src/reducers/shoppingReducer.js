@@ -1,9 +1,9 @@
 function shoppingReducer(state = {data: []}, action) {
 	switch(action.type){
 		case "FETCH_DATA":
-		return Object.assign({}, state, {data: action.payload})
+		  return Object.assign({}, state, {data: action.payload})
 		default:
-		return state
+		  return state;
 	}
 }
 
